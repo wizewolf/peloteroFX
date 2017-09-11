@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane fx:id="panePrincipal" stylesheets="@../recursos/Styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.MainController">
+	<center>
+		<AnchorPane>
+			<children>
+				<Pane prefHeight="200.0" prefWidth="200.0" />
+			</children>
+		</AnchorPane>
+	</center>
+	<top>
+		<MenuBar prefHeight="25.0" prefWidth="436.0" BorderPane.alignment="CENTER">
+			<menus>
+				<Menu fx:id="menuArchivo" mnemonicParsing="false" text="Archivo">
+					<items>
+						<MenuItem fx:id="mntCerrarSesion" mnemonicParsing="false" onAction="#CerrarSesion" text="Cerrar Sesiòn" />
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem fx:id="mntCerrar" mnemonicParsing="false" onAction="#Cerrar" text="Cerrar" />
+					</items>
+				</Menu>
+				<Menu fx:id="menuGestion" mnemonicParsing="false" text="Gestion">
+					<items>
+						<MenuItem fx:id="mntClientes" mnemonicParsing="false" onAction="#MostrarAll" text="Listar clientes" />
+						<MenuItem fx:id="mntFichaCliente" mnemonicParsing="false" onAction="#FichaCliente" text="Ficha Cliente" />
+					</items>
+				</Menu>
+				<Menu fx:id="menuAyuda" mnemonicParsing="false" text="Ayuda">
+					<items>
+						<MenuItem mnemonicParsing="false" text="About" />
+					</items>
+				</Menu>
+			</menus>
+			<styleClass>
+				<String fx:value="context-menu" />
+				<String fx:value="context-menu:focused" />
+			</styleClass>
+		</MenuBar>
+	</top>
+</BorderPane>

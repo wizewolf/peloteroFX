@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="panelBienvenida" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: #fff;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.PreLoader">
+   <children>
+      <ImageView fitHeight="372.0" fitWidth="617.0" layoutX="-61.0" layoutY="-27.0" opacity="0.59" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/img/colorido.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="228.0" layoutY="55.0" prefHeight="41.0" prefWidth="229.0" text="INFANTILES" textAlignment="CENTER">
+         <font>
+            <Font name="DejaVu Sans Bold Oblique" size="34.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="peloteroLogo" fitHeight="148.0" fitWidth="175.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/img/logo.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="211.0" layoutY="14.0" prefHeight="41.0" prefWidth="263.0" text="TRAVESURAS" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="258.0" prefHeight="41.0" prefWidth="155.0" text="DESARROLLADO POR:" textAlignment="CENTER">
+         <font>
+            <Font name="DejaVu Sans Bold Oblique" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="123.0" fitWidth="139.0" layoutX="361.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/img/MPConsultoria.png" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="DARKEN" fitHeight="105.0" fitWidth="88.0" layoutX="206.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/img/loading%20(1).gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="218.0" layoutY="206.0" text="CARGANDO...">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
