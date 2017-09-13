@@ -122,4 +122,11 @@ public class ClienteVo {
 		return celular;
 	}
 
+	@Override
+	public String toString() {
+		return "ClienteVo [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono="
+				+ telefono + ", mail=" + mail + ", otraInf=" + otraInf + ", direccion=" + direccion + ", celular="
+				+ celular + "]";
+	}
+
 }

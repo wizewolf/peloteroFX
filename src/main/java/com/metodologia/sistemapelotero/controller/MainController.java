@@ -9,9 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,30 +24,43 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+	@FXML
+	private AnchorPane panePrincipal;
+	@FXML
+	private Button btnNuevoUsuario;
 
 	@FXML
-	private MenuItem mntInicioSesion;
-	@FXML
-	private BorderPane panePrincipal;
+	private Button btnModificarUsuario;
 
 	@FXML
-	private MenuItem mntCerrarSesion;
+	private Button btnCerrarSesion;
 
 	@FXML
-	private MenuItem mntCerrar;
+	private Button btnSalir;
 
 	@FXML
-	private MenuItem mntFichaCliente;
+	private Button btnNuevoCliente;
+
 	@FXML
-	private Menu menuArchivo;
+	private Button btnTodosLosClientes;
+
 	@FXML
-	private Menu menuGestion;
+	private Button btnCombos;
+
 	@FXML
-	private Menu menuAyuda;
+	private Button btnTematicas;
+
 	@FXML
-	private MenuItem mntnMostrarClientes;
+	private Button btnReserva;
+
 	@FXML
-	private MenuItem mntnClientes;
+	private Button btnVerReservaCliente;
+
+	@FXML
+	private Button btnBebidas;
+
+	@FXML
+	private Button btnCambiarPrecios;
 
 	public boolean UsuarioAdmin;
 
@@ -75,17 +92,17 @@ public class MainController implements Initializable {
 	void FichaCliente(ActionEvent event) {
 		try {
 			Parent root;
-			FXMLLoader loader  = new FXMLLoader(getClass().getResource("../view/FichaCliente.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FichaCliente.fxml"));
 			root = loader.load();
 			Scene scene = new Scene(root);
 			Stage fichacliente = new Stage();
-			
-			FichaClienteController fichaController = (FichaClienteController)loader.getController();
+
+			FichaClienteController fichaController = (FichaClienteController) loader.getController();
 			fichaController.setDialogStage(fichacliente);
 			fichacliente.setScene(scene);
 			fichacliente.setResizable(false);
 			fichacliente.show();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,9 +120,9 @@ public class MainController implements Initializable {
 	public void setUsuarioAdmin(boolean UsuarioAdmin) {
 		this.UsuarioAdmin = UsuarioAdmin;
 		if (UsuarioAdmin) {
-			menuGestion.setDisable(false);
+			
 		} else {
-			menuGestion.setDisable(true);
+			
 		}
 	}
 
@@ -131,12 +148,12 @@ public class MainController implements Initializable {
 		try {
 			System.out.println("entro");
 			Parent root;
-			FXMLLoader loader  = new FXMLLoader(getClass().getResource("../view/TodosClientes.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TodosClientes.fxml"));
 			root = loader.load();
 			Scene scene = new Scene(root);
 			Stage clientesTodos = new Stage();
 
-			ClientesController clientesController = (ClientesController)loader.getController();
+			ClientesController clientesController = (ClientesController) loader.getController();
 			clientesController.setDialogStage(clientesTodos);
 			clientesTodos.setScene(scene);
 			clientesTodos.setResizable(false);

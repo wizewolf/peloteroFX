@@ -64,9 +64,9 @@ public class ClientesController implements Initializable {
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
-        List<ClientesJson> listCliente = RESTCliente.getClientes();
+        List<ClienteVo> listCliente = RESTCliente.getClientes();
         System.out.println("------------------->");
-        listCliente.forEach(x -> personsData.add(new ClienteVo(0,x.getCuil(),x.getnombre(),x.getApellido(),x.getDireccion(),x.getTelefono(),x.getEmail(),x.getOtraInformacion())));
+        listCliente.forEach(x -> personsData.add(new ClienteVo(x.getId(),x.getDni(),x.getNombre(),x.getApellido(),x.getDireccion(),x.getTelefono(),x.getMail(),x.getOtraInf())));
         tableClientes.setItems(personsData);
 
     }

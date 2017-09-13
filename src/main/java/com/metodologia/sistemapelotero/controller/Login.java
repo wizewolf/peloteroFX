@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -43,18 +44,18 @@ public class Login {
 								Stage stageMain = new Stage();
 								
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Main.fxml"));
-				BorderPane borderPaneMain = (BorderPane) loader.load();
+				AnchorPane borderPaneMain = (AnchorPane) loader.load();
 				MainController mainController = (MainController) loader.getController();
-				mainController.setUsuarioAdmin(true);
+			//	mainController.setUsuarioAdmin(true);
 				Scene scene = new Scene(borderPaneMain);
-
+				stageMain.setTitle("Travesuras Infantiles");
 				stageMain.setScene(scene);
 				stageMain.setMaximized(true);
-				if (usuario.equals("admin") && pass.equals("admin")) {
-					mainController.setUsuarioAdmin(true);
-				}else {
-					mainController.setUsuarioAdmin(false);
-				}
+//				if (usuario.equals("admin") && pass.equals("admin")) {
+//					mainController.setUsuarioAdmin(true);
+//				}else {
+//					mainController.setUsuarioAdmin(false);
+//				}
 				stageMain.show();
 				panelLogin.getScene().getWindow().hide();
 			} catch (IOException e) {
