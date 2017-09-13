@@ -6,26 +6,49 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 
 
-<Pane prefHeight="410.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.ClientesController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.ClientesController">
    <children>
-      <AnchorPane>
+      <AnchorPane layoutY="137.0" prefHeight="51.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="8.0">
          <children>
-            <TableView fx:id="tableClientes" prefHeight="350.0" prefWidth="800.0">
+            <HBox layoutX="431.0" layoutY="8.0" prefHeight="35.0" prefWidth="361.0" stylesheets="@../recursos/Styles.css" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button fx:id="btnAlta" mnemonicParsing="false" onAction="#alataCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta">
+                     <HBox.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="bntBaja" mnemonicParsing="false" onAction="#bajaCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja">
+                     <HBox.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="bntModificacion" mnemonicParsing="false" onAction="#modficarCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificacion">
+                     <HBox.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="bntCancelar" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar">
+                     <HBox.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="tableClientes" layoutX="-8.0" prefHeight="350.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="5.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Nombre" />
                 <TableColumn prefWidth="75.0" text="Apellido" />
                   <TableColumn prefWidth="77.0" text="DNI/C.U.I.L." />
-                  <TableColumn prefWidth="75.0" text="Direccion">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="Calle" />
-                        <TableColumn prefWidth="75.0" text="Altura" />
-                        <TableColumn prefWidth="75.0" text="Piso" />
-                        <TableColumn prefWidth="75.0" text="Nro" />
-                     </columns>
-                  </TableColumn>
+                  <TableColumn prefWidth="75.0" text="Direccion" />
                   <TableColumn prefWidth="75.0" text="E-Mail" />
                   <TableColumn prefWidth="75.0" text="Telefono" />
                   <TableColumn prefWidth="75.0" text="Otra Informacion" />
@@ -37,32 +60,5 @@
             </TableView>
          </children>
       </AnchorPane>
-      <HBox layoutX="400.0" layoutY="361.0" stylesheets="@../recursos/Styles.css">
-         <children>
-            <Button fx:id="btnAlta" mnemonicParsing="false" onAction="#alataCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta">
-               <HBox.margin>
-                  <Insets left="2.0" right="2.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="bntBaja" mnemonicParsing="false" onAction="#bajaCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja">
-               <HBox.margin>
-                  <Insets left="2.0" right="2.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="bntModificacion" mnemonicParsing="false" onAction="#modficarCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificacion">
-               <HBox.margin>
-                  <Insets left="2.0" right="2.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="bntCancelar" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar">
-               <HBox.margin>
-                  <Insets left="2.0" right="2.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </HBox>
    </children>
-</Pane>
+</AnchorPane>
