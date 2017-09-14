@@ -37,6 +37,9 @@ public class ClientesJson {
 		this.telefono = telefono;
 		this.direccion = direccion;
 	}
+	public ClientesJson() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getApellido() {
 		return apellido;
 	}

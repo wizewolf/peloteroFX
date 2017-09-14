@@ -7,45 +7,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.metodologia.sistemapelotero.modelos.Direccion;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 
-
 public class ClienteVo {
-	
+
 	private int id;
 
-	
-	private String dni;
-	
-	private String nombre;
-	
-	private String apellido;
+	private StringProperty dni;
 
-	
-	
-	private String telefono;
-	
-	private String mail;
-	
-	private String otraInf;
-	private Direccion direccion;
-	private String celular;
+	private StringProperty nombre;
+
+	private StringProperty apellido;
+
+	private StringProperty telefono;
+
+	private StringProperty mail;
+
+	private StringProperty otraInf;
+	private StringProperty direccion;
+	private StringProperty celular;
 
 	public ClienteVo() {
 
 	}
 
-	public ClienteVo(int id, String dni, String nombre, String apellido, Direccion direccion, String telefono, String mail,
-			String otraInf) {
-		
-		this.id = id;
-		this.dni = dni;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.direccion = direccion;
-		this.telefono = telefono;
-		this.mail = mail;
-		this.otraInf = otraInf;
+	public ClienteVo(String dni, String nombre, String apellido, String telefono, String mail, String otraInf,
+			String celular,Direccion direccion) {
+
+		this.dni = new SimpleStringProperty(dni);
+		this.nombre = new SimpleStringProperty(nombre);
+		this.apellido = new SimpleStringProperty(apellido);
+		this.telefono = new SimpleStringProperty(telefono);
+		this.mail = new SimpleStringProperty(mail);
+		this.otraInf = new SimpleStringProperty(otraInf);
+		this.celular = new SimpleStringProperty(celular);
+		this.direccion = new SimpleStringProperty(DireccionToString(direccion).toString());
 	}
 
 	public int getId() {
@@ -56,70 +54,88 @@ public class ClienteVo {
 		this.id = id;
 	}
 
-	public String getDni() {
+	public StringProperty getDni() {
 		return dni;
 	}
 
 	public void setDni(String dni) {
-		this.dni = dni;
+		this.dni.setValue(dni);
 	}
 
-	public String getNombre() {
+	public StringProperty getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre.setValue(nombre);
 	}
 
-	public String getApellido() {
+	public StringProperty getApellido() {
 		return apellido;
 	}
 
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		this.apellido.setValue(apellido);
 	}
 
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
-
-	public String getTelefono() {
+	public StringProperty getTelefono() {
 		return telefono;
 	}
 
 	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+		this.telefono.setValue(telefono);
 	}
 
-	public String getMail() {
+	public StringProperty getMail() {
 		return mail;
 	}
 
 	public void setMail(String mail) {
-		this.mail = mail;
+		this.mail.setValue(mail);
 	}
 
-	public String getOtraInf() {
+	public StringProperty getOtraInf() {
 		return otraInf;
 	}
 
 	public void setOtraInf(String otraInf) {
-		this.otraInf = otraInf;
+		this.otraInf.setValue(otraInf);
+	}
+
+	public StringProperty getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		StringBuilder sb = DireccionToString(direccion);
+		this.direccion.set(sb.toString());
+		;
+	}
+
+	private StringBuilder DireccionToString(Direccion direccion) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Calle: " + direccion.getCalle());
+		if (!direccion.getAltura().equals(null)) {
+			sb.append(" altura: " + direccion.getAltura());
+		} else {
+			sb.append(" altura: -");
+		}
+		sb.append(" piso: " + direccion.getPiso());
+
+		if (!direccion.getNroDepartamento().equals(null)) {
+			sb.append(" Nro de Dto: " + direccion.getNroDepartamento());
+		} else {
+			sb.append(" Nro de Dto: -");
+		}
+		return sb;
+	}
+
+	public StringProperty getCelular() {
+		return celular;
 	}
 
 	public void setCelular(String celular) {
-		this.celular = celular;
-		
-	}
-
-	public String getCelular() {
-		
-		return celular;
+		this.celular.setValue(celular);
 	}
 
 	@Override

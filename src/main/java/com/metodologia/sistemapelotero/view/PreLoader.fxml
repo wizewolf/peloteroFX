@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="372.0" fitWidth="617.0" layoutX="-61.0" layoutY="-27.0" opacity="0.59" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../recursos/img/colorido.jpg" />
+            <Image url="@../recursos/colorido.jpg" />
          </image>
       </ImageView>
       <Label layoutX="228.0" layoutY="55.0" prefHeight="41.0" prefWidth="229.0" text="INFANTILES" textAlignment="CENTER">
@@ -21,7 +21,7 @@
       </Label>
       <ImageView fx:id="peloteroLogo" fitHeight="148.0" fitWidth="175.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../recursos/img/logo.png" />
+            <Image url="@../recursos/logo.png" />
          </image>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
@@ -39,12 +39,12 @@
       </Label>
       <ImageView fitHeight="123.0" fitWidth="139.0" layoutX="361.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../recursos/img/MPConsultoria.png" />
+            <Image url="@../recursos/MPConsultoria.png" />
          </image>
       </ImageView>
       <ImageView blendMode="DARKEN" fitHeight="105.0" fitWidth="88.0" layoutX="206.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../recursos/img/loading%20(1).gif" />
+            <Image url="@../recursos/loading%20(1).gif" />
          </image>
       </ImageView>
       <Label layoutX="218.0" layoutY="206.0" text="CARGANDO...">

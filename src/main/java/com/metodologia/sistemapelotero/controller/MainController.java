@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+	//<------ Region de los controladores del FX --->
 	@FXML
 	private AnchorPane panePrincipal;
 	@FXML
@@ -61,12 +62,47 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button btnCambiarPrecios;
-
+	//<------ EndRegion de los controladores del FX --->
+	//<------ Region de los Atrivutos --->
 	public boolean UsuarioAdmin;
-
 	private Stage dialogStage;
 	private String str;
+	//<------ EndRegion de los atrivutos --->
+	//<------ Region de los metodos set/get/initialize --->
+	public void initialize(URL location, ResourceBundle resources) {
 
+	}
+
+	public boolean isUsuarioAdmin() {
+		return UsuarioAdmin;
+	}
+
+	public void setUsuarioAdmin(boolean UsuarioAdmin) {
+		this.UsuarioAdmin = UsuarioAdmin;
+		if (UsuarioAdmin) {
+
+		} else {
+
+		}
+	}
+
+	public Stage getDialogStage() {
+		return dialogStage;
+	}
+
+	public void setDialogStage(Stage dialogStage) {
+		this.dialogStage = dialogStage;
+	}
+
+	public String getStr() {
+		return str;
+	}
+
+	public void setStr(String str) {
+		this.str = str;
+	}
+	//<------ endRegion de los set/get/initialize --->
+	//<------ Region de los metodos FMXL --->
 	@FXML
 	void Cerrar(ActionEvent event) {
 		Platform.exit();
@@ -109,38 +145,6 @@ public class MainController implements Initializable {
 
 	}
 
-	public void initialize(URL location, ResourceBundle resources) {
-
-	}
-
-	public boolean isUsuarioAdmin() {
-		return UsuarioAdmin;
-	}
-
-	public void setUsuarioAdmin(boolean UsuarioAdmin) {
-		this.UsuarioAdmin = UsuarioAdmin;
-		if (UsuarioAdmin) {
-			
-		} else {
-			
-		}
-	}
-
-	public Stage getDialogStage() {
-		return dialogStage;
-	}
-
-	public void setDialogStage(Stage dialogStage) {
-		this.dialogStage = dialogStage;
-	}
-
-	public String getStr() {
-		return str;
-	}
-
-	public void setStr(String str) {
-		this.str = str;
-	}
 
 	@FXML
 	void MostrarAll(ActionEvent event) {
@@ -156,6 +160,7 @@ public class MainController implements Initializable {
 			ClientesController clientesController = (ClientesController) loader.getController();
 			clientesController.setDialogStage(clientesTodos);
 			clientesTodos.setScene(scene);
+			clientesTodos.setTitle("Lista de Clientes");
 			clientesTodos.setResizable(false);
 			clientesTodos.show();
 
@@ -163,4 +168,15 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+	@FXML
+	void GestionarUsuarios(ActionEvent event) {
+
+	}
+
+	@FXML
+	void nuevoUsuario(ActionEvent event) {
+
+	}
+	//<------ endRegion de los metodos FMXL --->
 }

@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane fx:id="anchoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #789;" stylesheets="@../recursos/img/Styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="panePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #789;" stylesheets="@../recursos/Styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutY="58.0" prefHeight="342.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="58.0">
          <children>
@@ -22,22 +21,22 @@
                            <children>
                               <VBox prefHeight="242.0" prefWidth="202.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnNuevoUsuario" mnemonicParsing="false" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="NUEVO USUARIO">
+                                    <Button fx:id="btnNuevoUsuario" mnemonicParsing="false" onAction="#nuevoUsuario" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="NUEVO USUARIO">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="2.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="btnModificarUsuario" mnemonicParsing="false" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="MODIFICAR USUARIO">
+                                    <Button fx:id="btnModificarUsuario" mnemonicParsing="false" onAction="#GestionarUsuarios" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="GESTIONAR USUARIO">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="2.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="btnCerrarSesion" mnemonicParsing="false" prefHeight="30.0" prefWidth="183.0" styleClass="botonMenu" text="CERRAR SESIÓN">
+                                    <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#CerrarSesion" prefHeight="30.0" prefWidth="183.0" styleClass="botonMenu" text="CERRAR SESIÓN">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="2.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="btnSalir" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" styleClass="botonMenu" text="SALIR">
+                                    <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#Cerrar" prefHeight="30.0" prefWidth="180.0" styleClass="botonMenu" text="SALIR">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="2.0" />
                                        </VBox.margin>
@@ -54,12 +53,12 @@
                            <children>
                               <VBox prefHeight="244.0" prefWidth="202.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnNuevoCliente" mnemonicParsing="false" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="NUEVO CLINETE">
+                                    <Button fx:id="btnNuevoCliente" mnemonicParsing="false" onAction="#FichaCliente" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="NUEVO CLINETE">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="btnTodosLosClientes" mnemonicParsing="false" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="MOSTRAR CLINETES">
+                                    <Button fx:id="btnTodosLosClientes" mnemonicParsing="false" onAction="#MostrarAll" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="MOSTRAR CLINETES">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>
@@ -135,7 +134,7 @@
          <children>
             <ImageView fitHeight="53.0" fitWidth="96.0" layoutX="541.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.5037040710449219" AnchorPane.topAnchor="3.0">
                <image>
-                  <Image url="@../recursos/img/logo.png" />
+                  <Image url="@../recursos/logo.png" />
                </image>
             </ImageView>
          </children>

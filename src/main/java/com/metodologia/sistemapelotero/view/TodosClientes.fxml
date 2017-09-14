@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.ClientesController">
+<AnchorPane prefHeight="405.0" prefWidth="970.0" style="-fx-background-color: #789;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.ClientesController">
    <children>
       <AnchorPane layoutY="137.0" prefHeight="51.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="8.0">
          <children>
-            <HBox layoutX="431.0" layoutY="8.0" prefHeight="35.0" prefWidth="361.0" stylesheets="@../recursos/Styles.css" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="0.0">
+            <HBox fx:id="hBox" layoutX="431.0" layoutY="8.0" prefHeight="35.0" prefWidth="361.0" stylesheets="@../recursos/Styles.css" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Button fx:id="btnAlta" mnemonicParsing="false" onAction="#alataCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta">
                      <HBox.margin>
@@ -24,7 +23,7 @@
                         <Insets left="2.0" right="2.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="bntModificacion" mnemonicParsing="false" onAction="#modficarCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificacion">
+                  <Button fx:id="bntModificacion" mnemonicParsing="false" onAction="#modficarCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar">
                      <HBox.margin>
                         <Insets left="2.0" right="2.0" />
                      </HBox.margin>
@@ -45,14 +44,14 @@
          <children>
             <TableView fx:id="tableClientes" layoutX="-8.0" prefHeight="350.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="5.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Nombre" />
-                <TableColumn prefWidth="75.0" text="Apellido" />
-                  <TableColumn prefWidth="77.0" text="DNI/C.U.I.L." />
-                  <TableColumn prefWidth="75.0" text="Direccion" />
-                  <TableColumn prefWidth="75.0" text="E-Mail" />
-                  <TableColumn prefWidth="75.0" text="Telefono" />
-                  <TableColumn prefWidth="75.0" text="Otra Informacion" />
-                  <TableColumn prefWidth="40.0" text="Celular" />
+                <TableColumn fx:id="columNombre" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
+                <TableColumn fx:id="columApellido" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Apellido" />
+                  <TableColumn fx:id="columDNI" editable="false" prefWidth="93.0" resizable="false" sortable="false" text="DNI/C.U.I.L." />
+                  <TableColumn fx:id="columDireccion" editable="false" prefWidth="119.0" resizable="false" sortable="false" text="Direccion" />
+                  <TableColumn fx:id="columMil" editable="false" prefWidth="111.0" resizable="false" sortable="false" text="E-Mail" />
+                  <TableColumn fx:id="columTelefono" editable="false" prefWidth="98.0" resizable="false" sortable="false" text="Telefono" />
+                  <TableColumn fx:id="columOtIn" editable="false" prefWidth="136.0" resizable="false" sortable="false" text="Otra Informacion" />
+                  <TableColumn fx:id="columCelular" minWidth="0.0" prefWidth="92.0" text="Celular" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

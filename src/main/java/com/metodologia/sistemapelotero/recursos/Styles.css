@@ -19,16 +19,16 @@
     -fx-text-fill: green;
     -fx-border-color: green;
     -fx-border-radius: 30.0;
-    -fx-padding: 3.0 6.0 6.0 6.0;
-    -fx-background-radius:30.0;
-    -fx-border-width:1.0;
+    /*-fx-padding: 3.0 6.0 6.0 6.0;*/
+    -fx-background-radius: 29.0;
+    -fx-border-width: 1.0;
 }
 .button-aceptar:hover{
 	-fx-font-weight:bold;
      -fx-text-fill: green;
     -fx-border-color: green;
     -fx-border-radius: 30.0;
-    -fx-padding: 3.0 6.0 6.0 6.0;
+  /*  -fx-padding: 3.0 6.0 6.0 6.0;*/
     -fx-background-radius:30.0;
     -fx-border-width:2.0;
 }

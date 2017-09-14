@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 
 public class FichaClienteController implements Initializable{
-	private ClienteVo cliente;
+	private ClientesJson cliente;
 	private Stage dialogStage;
 
     @FXML
@@ -69,7 +69,7 @@ public class FichaClienteController implements Initializable{
     void aceptar(ActionEvent event) {
     	if (cliente ==null) {
     		if (txtDni.getText().length()>0&&txtNombre.getText().length()>0&&txtApellido.getText().length()>0&&txtTelefono.getText().length()>0) {
-        		ClienteVo clienteOK = new ClienteVo();
+        		ClientesJson clienteOK = new ClientesJson();
         		Direccion direccion = new Direccion();
         		direccion.setPiso(Integer.parseInt(txtPiso.getText()));
         		direccion.setAltura(txtAltura.getText());
@@ -77,9 +77,9 @@ public class FichaClienteController implements Initializable{
         		direccion.setNroDepartamento(txtNro.getText());
         		clienteOK.setApellido(txtApellido.getText());
         		clienteOK.setNombre(txtNombre.getText());
-        		clienteOK.setDni(txtDni.getText());
-        		clienteOK.setOtraInf(txtOInf.getText());
-        		clienteOK.setMail(txtMail.getText());
+        		clienteOK.setCuil(txtDni.getText());
+        		clienteOK.setOtraInformacion(txtOInf.getText());
+        		clienteOK.setEmail(txtMail.getText());
         		clienteOK.setTelefono(txtTelefono.getText());
         		clienteOK.setDireccion(direccion);
         		clienteOK.setCelular(txtCelular.getText());
@@ -100,10 +100,10 @@ public class FichaClienteController implements Initializable{
         		direccion.setNroDepartamento(txtNro.getText());
         		cliente.setApellido(txtApellido.getText());
         		cliente.setNombre(txtNombre.getText());
-        		cliente.setDni(txtDni.getText());
+        		cliente.setCuil(txtDni.getText());
         		cliente.setCelular(txtCelular.getText());
-        		cliente.setOtraInf(txtOInf.getText());
-        		cliente.setMail(txtMail.getText());
+        		cliente.setOtraInformacion(txtOInf.getText());
+        		cliente.setEmail(txtMail.getText());
         		cliente.setTelefono(txtTelefono.getText());
         		cliente.setDireccion(direccion);
         		altacliente(cliente);
@@ -120,9 +120,8 @@ public class FichaClienteController implements Initializable{
     	
     }
 
-    private void altacliente(ClienteVo clienteOK) {
-		ClientesJson clienteJSON = new ClientesJson(clienteOK.getApellido(), clienteOK.getCelular(),clienteOK.getDni(),clienteOK.getMail(), clienteOK.getNombre(), clienteOK.getOtraInf(), clienteOK.getTelefono(), clienteOK.getDireccion());
-    	if(RESTCliente.postClienteAdd(clienteJSON)){
+    private void altacliente(ClientesJson clienteOK) {
+    	if(RESTCliente.postClienteAdd(clienteOK)){
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Cliente Cargado");
 			alert.setContentText("se cargo el cliente correctamente");
@@ -145,20 +144,20 @@ public class FichaClienteController implements Initializable{
 		
 	}
 
-	public ClienteVo getCliente() {
+	public ClientesJson getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(ClienteVo cliente) {
+	public void setCliente(ClientesJson cliente) {
 		this.cliente = cliente;
-		txtDireccion.setText(cliente.getDni());
-		txtNombre.setText(cliente.getNombre());
+		txtDireccion.setText(cliente.getCuil());
+		txtNombre.setText(cliente.getnombre());
 		txtCalle.setText(cliente.getDireccion().getCalle());
 		txtPiso.setText(""+cliente.getDireccion().getPiso());
 		txtAltura.setText(""+cliente.getDireccion().getAltura());
-		txtMail.setText(cliente.getMail());
+		txtMail.setText(cliente.getEmail());
 		txtApellido.setText(cliente.getApellido());
-		txtOInf.setText(cliente.getOtraInf());
+		txtOInf.setText(cliente.getOtraInformacion());
 	}
 
 	public Stage getDialogStage() {

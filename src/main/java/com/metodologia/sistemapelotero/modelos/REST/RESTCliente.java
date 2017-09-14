@@ -60,7 +60,7 @@ public class RESTCliente {
 		}
 	}
 
-	public static List<ClienteVo> getClientes() {
+	public static List<ClientesJson> getClientes() {
 
 		try {
 			
@@ -76,11 +76,11 @@ public class RESTCliente {
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
 			String output;
-			List<ClienteVo> list = null;
+			List<ClientesJson> list = null;
 			System.out.println("Output from Server .... \n");
 			while ((output = br.readLine()) != null) {
 				Gson gson = new Gson();
-				list = gson.fromJson(output, new TypeToken<List<ClienteVo>>() {
+				list = gson.fromJson(output, new TypeToken<List<ClientesJson>>() {
 				}.getType());
 			}
 			
