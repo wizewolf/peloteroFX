@@ -56,6 +56,17 @@ public class ClientesController implements Initializable {
 
 	@FXML
 	private TableColumn<ClienteVo, String> columDireccion;
+	@FXML
+	private TableColumn<ClienteVo, String> columCalle;
+
+	@FXML
+	private TableColumn<ClienteVo, String> columAltura;
+
+	@FXML
+	private TableColumn<ClienteVo, String> columPsio;
+
+	@FXML
+	private TableColumn<ClienteVo, String> columNroDpt;
 
 	@FXML
 	private TableColumn<ClienteVo, String> columMil;
@@ -91,7 +102,7 @@ public class ClientesController implements Initializable {
 
 	@FXML
 	void bajaCliente(ActionEvent event) {
-		
+
 	}
 
 	@FXML
@@ -102,7 +113,7 @@ public class ClientesController implements Initializable {
 	@FXML
 	void modficarCliente(ActionEvent event) {
 		try {
-			
+
 			Parent root;
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FichaCliente.fxml"));
 			root = loader.load();
@@ -122,12 +133,15 @@ public class ClientesController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		columDNI.setCellValueFactory(cellData -> cellData.getValue().getDni());
 		columNombre.setCellValueFactory(cellData -> cellData.getValue().getNombre());
 		columApellido.setCellValueFactory(cellData -> cellData.getValue().getApellido());
 		columTelefono.setCellValueFactory(cellData -> cellData.getValue().getTelefono());
-		columDireccion.setCellValueFactory(cellData -> cellData.getValue().getDireccion());
+		columCalle.setCellValueFactory(cellData -> cellData.getValue().getCalle());
+		columAltura.setCellValueFactory(cellData -> cellData.getValue().getAltura());
+		columPsio.setCellValueFactory(cellData -> cellData.getValue().getPiso());
+		columNroDpt.setCellValueFactory(cellData -> cellData.getValue().getNroDepartamento());
 		columMil.setCellValueFactory(cellData -> cellData.getValue().getMail());
 		columCelular.setCellValueFactory(cellData -> cellData.getValue().getCelular());
 		columOtIn.setCellValueFactory(cellData -> cellData.getValue().getOtraInf());
@@ -137,9 +151,11 @@ public class ClientesController implements Initializable {
 		System.out.println("------------------->");
 		System.out.println(listCliente);
 		for (ClientesJson clientesJson : listCliente) {
-			personsData.add(new ClienteVo(clientesJson.getCuil(),clientesJson.getnombre(),clientesJson.getApellido(),clientesJson.getTelefono(),
-					clientesJson.getEmail(),clientesJson.getOtraInformacion(),clientesJson.getCelular(),clientesJson.getDireccion()));
-		};
+			personsData.add(new ClienteVo(clientesJson.getCuil(), clientesJson.getnombre(), clientesJson.getApellido(),
+					clientesJson.getTelefono(), clientesJson.getEmail(), clientesJson.getOtraInformacion(),
+					clientesJson.getCelular(), clientesJson.getDireccion()));
+		}
+		;
 		System.out.println(personsData);
 		tableClientes.setItems(personsData);
 	}

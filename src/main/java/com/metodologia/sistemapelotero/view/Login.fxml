@@ -7,51 +7,58 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="panelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" stylesheets="@../recursos/Styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.Login">
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.Login">
    <children>
-      <Label layoutX="28.0" layoutY="35.0" text="BIENVENIDO" textFill="#a1a1a1" textOverrun="CENTER_ELLIPSIS">
-         <font>
-            <Font name="System Bold" size="40.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="112.0" fitWidth="141.0" layoutX="88.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../recursos/logo.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="28.0" layoutY="215.0" text="USUARIO:">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtUsuario" layoutX="28.0" layoutY="242.0" prefHeight="25.0" prefWidth="243.0">
-         <padding>
-            <Insets left="30.0" />
-         </padding></TextField>
-      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="29.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../recursos/us.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="29.0" layoutY="274.0" text="CONTRASEÑA:">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="txtPass" layoutX="28.0" layoutY="299.0" prefHeight="25.0" prefWidth="243.0">
-         <padding>
-            <Insets left="30.0" />
-         </padding>
-      </PasswordField>
-      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="30.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../recursos/candado.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="btnAceptar" layoutX="45.0" layoutY="355.0" mnemonicParsing="false" onAction="#aceptar" prefHeight="27.0" prefWidth="89.0" styleClass="button-aceptar" text="ACEPTAR" />
-      <Button fx:id="btnCancelar" layoutX="177.0" layoutY="357.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="27.0" prefWidth="89.0" styleClass="button-cancel" text="CANCELAR" />
+      <Pane fx:id="panelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #b0b8c3;" stylesheets="@../recursos/Styles.css">
+         <children>
+            <Label layoutX="28.0" layoutY="35.0" style="-fx-text-overrun: #000;" text="BIENVENIDO" textFill="#6b6868" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="112.0" fitWidth="141.0" layoutX="88.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="28.0" layoutY="215.0" text="USUARIO:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUsuario" layoutX="28.0" layoutY="242.0" prefHeight="25.0" prefWidth="243.0">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </TextField>
+            <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="29.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/us.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="29.0" layoutY="274.0" text="CONTRASEÑA:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="txtPass" layoutX="28.0" layoutY="299.0" prefHeight="25.0" prefWidth="243.0">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </PasswordField>
+            <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="30.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/candado.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnAceptar" layoutX="45.0" layoutY="355.0" mnemonicParsing="false" onAction="#aceptar" prefHeight="27.0" prefWidth="89.0" styleClass="button-aceptar" text="ACEPTAR" />
+            <Button fx:id="btnCancelar" layoutX="177.0" layoutY="357.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="27.0" prefWidth="89.0" styleClass="button-cancel" text="CANCELAR" />
+         </children>
+      </Pane>
    </children>
-</Pane>
+</AnchorPane>

@@ -26,7 +26,14 @@ public class ClienteVo {
 	private StringProperty mail;
 
 	private StringProperty otraInf;
-	private StringProperty direccion;
+	private StringProperty calle;
+
+	private StringProperty altura;
+
+	private StringProperty nroDepartamento;
+
+	private StringProperty piso;
+
 	private StringProperty celular;
 
 	public ClienteVo() {
@@ -43,7 +50,11 @@ public class ClienteVo {
 		this.mail = new SimpleStringProperty(mail);
 		this.otraInf = new SimpleStringProperty(otraInf);
 		this.celular = new SimpleStringProperty(celular);
-		this.direccion = new SimpleStringProperty(DireccionToString(direccion).toString());
+		this.calle = new SimpleStringProperty(direccion.getCalle());
+		this.altura = new SimpleStringProperty(direccion.getAltura());
+		this.piso = new SimpleStringProperty(String.valueOf(direccion.getPiso()));
+		this.setNroDepartamento(new SimpleStringProperty(direccion.getNroDepartamento()));
+		 
 	}
 
 	public int getId() {
@@ -102,33 +113,37 @@ public class ClienteVo {
 		this.otraInf.setValue(otraInf);
 	}
 
-	public StringProperty getDireccion() {
-		return direccion;
+
+
+	public StringProperty getCalle() {
+		return calle;
 	}
 
-	public void setDireccion(Direccion direccion) {
-		StringBuilder sb = DireccionToString(direccion);
-		this.direccion.set(sb.toString());
-		;
+	public void setCalle(StringProperty calle) {
+		this.calle = calle;
 	}
 
-	private StringBuilder DireccionToString(Direccion direccion) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Calle: " + direccion.getCalle());
-		if (!direccion.getAltura().equals(null)) {
-			sb.append(" altura: " + direccion.getAltura());
-		} else {
-			sb.append(" altura: -");
-		}
-		sb.append(" piso: " + direccion.getPiso());
-
-		if (!direccion.getNroDepartamento().equals(null)) {
-			sb.append(" Nro de Dto: " + direccion.getNroDepartamento());
-		} else {
-			sb.append(" Nro de Dto: -");
-		}
-		return sb;
+	public StringProperty getAltura() {
+		return altura;
 	}
+
+	public void setAltura(StringProperty altura) {
+		this.altura = altura;
+	}
+
+	public StringProperty getPiso() {
+		return piso;
+	}
+
+	public void setPiso(StringProperty piso) {
+		this.piso = piso;
+	}
+
+	public void setApellido(StringProperty apellido) {
+		this.apellido = apellido;
+	}
+
+	
 
 	public StringProperty getCelular() {
 		return celular;
@@ -138,11 +153,14 @@ public class ClienteVo {
 		this.celular.setValue(celular);
 	}
 
-	@Override
-	public String toString() {
-		return "ClienteVo [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono="
-				+ telefono + ", mail=" + mail + ", otraInf=" + otraInf + ", direccion=" + direccion + ", celular="
-				+ celular + "]";
+	public StringProperty getNroDepartamento() {
+		return nroDepartamento;
 	}
+
+	public void setNroDepartamento(StringProperty nroDepartamento) {
+		this.nroDepartamento = nroDepartamento;
+	}
+
+	
 
 }

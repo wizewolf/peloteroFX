@@ -5,46 +5,40 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.FichaClienteController">
+<AnchorPane prefHeight="377.0" prefWidth="363.0" style="-fx-background-color: #b0b8c3;" stylesheets="@../recursos/Styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.FichaClienteController">
    <children>
-      <AnchorPane prefHeight="404.0" prefWidth="359.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="378.0" prefWidth="363.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="DNI/CUIL:(*)" />
-            <TextField fx:id="txtDni" layoutX="85.0" layoutY="10.0" />
+            <TextField fx:id="txtDni" layoutX="85.0" layoutY="8.0" />
             <Label layoutX="17.0" layoutY="42.0" text="Nombre:(*)" />
             <TextField fx:id="txtNombre" layoutX="85.0" layoutY="38.0" prefHeight="25.0" prefWidth="196.0" />
             <Label layoutX="17.0" layoutY="71.0" text="Apellido:(*)" />
             <TextField fx:id="txtApellido" layoutX="86.0" layoutY="67.0" prefHeight="25.0" prefWidth="196.0" />
             <Label layoutX="19.0" layoutY="99.0" text="Celular:(*)" />
-            <TextField fx:id="txtCelular" layoutX="86.0" layoutY="95.0" prefHeight="25.0" prefWidth="196.0" />
-            <Separator layoutY="128.0" prefHeight="3.0" prefWidth="359.0" />
+            <TextField fx:id="txtCelular" layoutX="86.0" layoutY="96.0" prefHeight="25.0" prefWidth="196.0" />
+            <Separator layoutY="128.0" prefHeight="3.0" prefWidth="363.0" />
+            <Label layoutX="19.0" layoutY="135.0" text="Direccion:" />
+            <Label layoutX="21.0" layoutY="160.0" text="Calle:" />
+            <Label layoutX="21.0" layoutY="189.0" text="Altura:" />
+            <Label layoutX="118.0" layoutY="188.0" text="Piso:" />
+            <TextField fx:id="txtCalle" layoutX="60.0" layoutY="154.0" prefHeight="27.0" prefWidth="277.0" />
+            <TextField fx:id="txtAltura" layoutX="60.0" layoutY="185.0" prefHeight="25.0" prefWidth="52.0" />
+            <TextField fx:id="txtPiso" layoutX="154.0" layoutY="184.0" prefHeight="25.0" prefWidth="52.0" />
+            <Label layoutX="213.0" layoutY="188.0" prefHeight="3.0" prefWidth="23.0" text="Nro:" />
+            <TextField fx:id="txtNro" layoutX="245.0" layoutY="184.0" prefHeight="25.0" prefWidth="52.0" />
+            <Separator layoutX="4.0" layoutY="223.0" prefHeight="3.0" prefWidth="359.0" />
+            <Label layoutX="21.0" layoutY="235.0" text="Telefono:" />
+            <TextField fx:id="txtTelefono" layoutX="85.0" layoutY="231.0" />
+            <Label layoutX="22.0" layoutY="263.0" text="Mail:" />
+            <TextField fx:id="txtMail" layoutX="60.0" layoutY="258.0" prefHeight="27.0" prefWidth="277.0" />
+            <Label layoutX="24.0" layoutY="294.0" text="Otra informacion:" />
+            <TextField fx:id="txtOInf" layoutX="125.0" layoutY="289.0" prefHeight="27.0" prefWidth="212.0" />
+            <Separator layoutX="-12.0" layoutY="328.0" prefHeight="3.0" prefWidth="375.0" />
+            <Button fx:id="bntAceptar" layoutX="154.0" layoutY="337.0" mnemonicParsing="false" onAction="#aceptar" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Aceptar" />
+            <Button fx:id="bntCancelar" layoutX="254.0" layoutY="337.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
          </children>
       </AnchorPane>
-      <Pane fx:id="paneFichaClientes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="359.0" stylesheets="@../recursos/Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label layoutX="26.0" layoutY="156.0" text="Direccion:" />
-            <Label layoutX="28.0" layoutY="184.0" text="Calle:" />
-            <Label layoutX="25.0" layoutY="214.0" text="Altura:" />
-            <Label layoutX="125.0" layoutY="214.0" text="Piso:" />
-            <TextField fx:id="txtCalle" layoutX="63.0" layoutY="178.0" prefHeight="25.0" prefWidth="196.0" />
-            <TextField fx:id="txtAltura" layoutX="63.0" layoutY="210.0" prefHeight="25.0" prefWidth="52.0" />
-            <TextField fx:id="txtPiso" layoutX="159.0" layoutY="210.0" prefHeight="25.0" prefWidth="52.0" />
-            <Label layoutX="216.0" layoutY="214.0" text="Nro:" />
-            <TextField fx:id="txtNro" layoutX="250.0" layoutY="210.0" prefHeight="25.0" prefWidth="52.0" />
-            <Label layoutX="26.0" layoutY="256.0" text="Telefono:" />
-            <TextField fx:id="txtTelefono" layoutX="81.0" layoutY="252.0" />
-            <Label layoutX="26.0" layoutY="292.0" text="Mail:" />
-            <TextField fx:id="txtMail" layoutX="81.0" layoutY="288.0" prefHeight="25.0" prefWidth="261.0" />
-            <Label layoutX="26.0" layoutY="326.0" text="Otra informacion:" />
-            <TextField fx:id="txtOInf" layoutX="124.0" layoutY="322.0" prefHeight="25.0" prefWidth="218.0" />
-            <Separator layoutY="357.0" prefHeight="3.0" prefWidth="359.0" />
-            <Button fx:id="bntCancelar" layoutX="259.0" layoutY="363.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
-            <Button fx:id="bntAceptar" layoutX="170.0" layoutY="363.0" mnemonicParsing="false" onAction="#aceptar" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Aceptar" />
-            <Separator layoutY="241.0" prefHeight="3.0" prefWidth="359.0" />
-         </children>
-      </Pane>
    </children>
 </AnchorPane>

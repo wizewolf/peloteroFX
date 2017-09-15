@@ -47,7 +47,13 @@
                 <TableColumn fx:id="columNombre" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
                 <TableColumn fx:id="columApellido" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Apellido" />
                   <TableColumn fx:id="columDNI" editable="false" prefWidth="93.0" resizable="false" sortable="false" text="DNI/C.U.I.L." />
-                  <TableColumn fx:id="columDireccion" editable="false" prefWidth="119.0" resizable="false" sortable="false" text="Direccion" />
+                  <TableColumn fx:id="columDireccion" editable="false" prefWidth="119.0" resizable="false" sortable="false" text="Direccion">
+                     <columns>
+                        <TableColumn fx:id="columCalle" prefWidth="75.0" text="Calle" />
+                        <TableColumn fx:id="columAltura" prefWidth="75.0" text="Altura" />
+                        <TableColumn fx:id="columPsio" prefWidth="75.0" text="Piso" />
+                        <TableColumn fx:id="columNroDpt" prefWidth="75.0" text="Nro Dpto" />
+                     </columns></TableColumn>
                   <TableColumn fx:id="columMil" editable="false" prefWidth="111.0" resizable="false" sortable="false" text="E-Mail" />
                   <TableColumn fx:id="columTelefono" editable="false" prefWidth="98.0" resizable="false" sortable="false" text="Telefono" />
                   <TableColumn fx:id="columOtIn" editable="false" prefWidth="136.0" resizable="false" sortable="false" text="Otra Informacion" />

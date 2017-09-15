@@ -92,5 +92,8 @@
 .titled-pane:collapse .content{
 	-fx-background-color:#f5d9dd;
 }
+.text-field{
+	-fx-border-color:#000;
+}
 
 
