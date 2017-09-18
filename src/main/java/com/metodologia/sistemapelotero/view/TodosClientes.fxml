@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="405.0" prefWidth="970.0" style="-fx-background-color: #789;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.ClientesController">
+<AnchorPane prefHeight="405.0" prefWidth="970.0" style="-fx-background-color: #b0b8c3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.ClientesController">
    <children>
       <AnchorPane layoutY="137.0" prefHeight="51.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="8.0">
          <children>
