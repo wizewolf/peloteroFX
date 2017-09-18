@@ -157,6 +157,7 @@
                            <children>
                               <TableView fx:id="tableClientes" layoutX="-8.0" prefHeight="350.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="5.0">
                                  <columns>
+                                    <TableColumn fx:id="columId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
                                     <TableColumn fx:id="columNombre" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
                                     <TableColumn fx:id="columApellido" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Apellido" />
                                     <TableColumn fx:id="columDNI" editable="false" prefWidth="93.0" resizable="false" sortable="false" text="DNI/C.U.I.L." />
@@ -220,7 +221,7 @@
                               <Label layoutX="424.0" layoutY="294.0" text="Otra informacion:" />
                               <TextField fx:id="txtOInf" layoutX="525.0" layoutY="289.0" prefHeight="27.0" prefWidth="212.0" />
                               <Separator layoutX="388.0" layoutY="328.0" prefHeight="3.0" prefWidth="375.0" />
-                              <Button fx:id="bntAceptar" disable="true" layoutX="560.0" layoutY="337.0" mnemonicParsing="false" onAction="#aceptar" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar Cliente" />
+                              <Button fx:id="bntAceptar" disable="true" layoutX="560.0" layoutY="337.0" mnemonicParsing="false" onAction="#modficarCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar Cliente" />
                               <Button fx:id="bntCancelar" disable="true" layoutX="650.0" layoutY="337.0" mnemonicParsing="false" onAction="#cancelarAltaCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" visible="false" />
                               <Button fx:id="bntaltaCliente" disable="true" layoutX="560.0" layoutY="337.0" mnemonicParsing="false" onAction="#altaCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Cliente" />
                               <Button fx:id="bntBaja" disable="true" layoutX="470.0" layoutY="337.0" mnemonicParsing="false" onAction="#bajaCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" />

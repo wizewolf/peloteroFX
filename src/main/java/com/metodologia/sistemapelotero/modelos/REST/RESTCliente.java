@@ -59,6 +59,47 @@ public class RESTCliente {
 			return false;
 		}
 	}
+	public static boolean putClienteModificar(ClientesJson persona) {
+		try {
+			
+			URL url = new URL(WS_URI + "clientes/"+persona.getId());
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
+			conn.setRequestMethod("PUT");
+			conn.setRequestProperty("Content-Type", "application/json");
+			
+			Gson gson = new Gson();
+			String input = gson.toJson(persona);
+			System.out.println(input);
+			
+			OutputStream os = conn.getOutputStream();
+			os.write(input.getBytes());
+			os.flush();
+			
+			if (conn.getResponseCode() != 200) { // HttpURLConnection.HTTP_CREATED
+				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+			}
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+			
+			String output;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+			
+			conn.disconnect();
+			return true;
+			
+		} catch (MalformedURLException ex) {
+			System.err.println(ex.getMessage());
+			return false;
+			
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
+			return false;
+		}
+	}
 
 	public static List<ClientesJson> getClientes() {
 
@@ -93,5 +134,47 @@ public class RESTCliente {
 			System.err.println(ex.getMessage());
 		}
 		return null;
+	}
+
+	public static boolean deteCliente(int id) {
+		try {
+
+			URL url = new URL(WS_URI + "clientes/"+id);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
+			conn.setRequestMethod("DELETE");
+			conn.setRequestProperty("Content-Type", "application/json");
+
+			// Gson gson = new Gson();
+			// String input = gson.toJson(persona);
+			// System.out.println(input);
+
+//			OutputStream os = conn.getOutputStream();
+//			os.write(input.getBytes());
+//			os.flush();
+
+			if (conn.getResponseCode() != 200) { // HttpURLConnection.HTTP_CREATED
+				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+			String output;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				System.out.println(output);
+			}
+
+			conn.disconnect();
+			return true;
+
+		} catch (MalformedURLException ex) {
+			System.err.println(ex.getMessage());
+			return false;
+
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
+			return false;
+		}
 	}
 }

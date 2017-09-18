@@ -7,13 +7,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.metodologia.sistemapelotero.modelos.Direccion;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 
 public class ClienteVo {
 
-	private int id;
+	private StringProperty id;
+	
 
 	private StringProperty dni;
 
@@ -40,9 +42,9 @@ public class ClienteVo {
 
 	}
 
-	public ClienteVo(String dni, String nombre, String apellido, String telefono, String mail, String otraInf,
+	public ClienteVo(int id,String dni, String nombre, String apellido, String telefono, String mail, String otraInf,
 			String celular,Direccion direccion) {
-
+		this.id= new SimpleStringProperty(""+id);
 		this.dni = new SimpleStringProperty(dni);
 		this.nombre = new SimpleStringProperty(nombre);
 		this.apellido = new SimpleStringProperty(apellido);
@@ -57,12 +59,12 @@ public class ClienteVo {
 		 
 	}
 
-	public int getId() {
+	public StringProperty getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String id) {
+		this.id.setValue(id);
 	}
 
 	public StringProperty getDni() {

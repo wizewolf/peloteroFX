@@ -22,12 +22,14 @@ public class ClientesJson {
     "telefono": "string"
  * 
  * */	
+	private int id;
 	private String apellido,celular;
 	private Direccion direccion;
 	private String cuil,email,nombre,otraInformacion,telefono;
 	
-	public ClientesJson(String apellido, String celular, String cuil, String email, String nombre,
+	public ClientesJson(int id,String apellido, String celular, String cuil, String email, String nombre,
 			String otraInformacion, String telefono, Direccion direccion) {
+		this.setId(id);
 		this.apellido = apellido;
 		this.celular = celular;
 		this.cuil = cuil;
@@ -93,6 +95,12 @@ public class ClientesJson {
 		return "ClientesJson [apellido=" + apellido + ", celular=" + celular + ", cuil=" + cuil + ", email=" + email
 				+ ", nombre=" + nombre + ", otraInformacion=" + otraInformacion + ", telefono=" + telefono
 				+ ", direccion=" + direccion + "]";
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

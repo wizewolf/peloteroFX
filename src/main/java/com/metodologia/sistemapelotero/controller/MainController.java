@@ -94,6 +94,9 @@ public class MainController implements Initializable {
 	private TableColumn<ClienteVo, String> columApellido;
 
 	@FXML
+	private TableColumn<ClienteVo, String> columId;
+
+	@FXML
 	private TableColumn<ClienteVo, String> columDNI;
 
 	@FXML
@@ -281,6 +284,7 @@ public class MainController implements Initializable {
 	}
 
 	private void cargarTabla() {
+		columId.setCellValueFactory(cellData -> cellData.getValue().getId());
 		columDNI.setCellValueFactory(cellData -> cellData.getValue().getDni());
 		columNombre.setCellValueFactory(cellData -> cellData.getValue().getNombre());
 		columApellido.setCellValueFactory(cellData -> cellData.getValue().getApellido());
@@ -298,7 +302,7 @@ public class MainController implements Initializable {
 			System.out.println("------------------->");
 			System.out.println(listCliente);
 			for (ClientesJson clientesJson : listCliente) {
-				personsData.add(new ClienteVo(clientesJson.getCuil(), clientesJson.getnombre(),
+				personsData.add(new ClienteVo(clientesJson.getId(), clientesJson.getCuil(), clientesJson.getnombre(),
 						clientesJson.getApellido(), clientesJson.getTelefono(), clientesJson.getEmail(),
 						clientesJson.getOtraInformacion(), clientesJson.getCelular(), clientesJson.getDireccion()));
 			}
@@ -383,8 +387,20 @@ public class MainController implements Initializable {
 
 	}
 
+	// -------------Modulo Cliente------------- //
 	@FXML
 	void bajaCliente(ActionEvent event) {
+		if (RESTCliente.deteCliente(Integer.valueOf(cliente.getId().getValue()))) {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Baja del CLIENTE con exito");
+			alert.setContentText("La operacion se completo con exito");
+			alert.show();
+			cargarTabla();
+		} else {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Error en la baja del Cliente");
+			alert.show();
+		}
 
 	}
 
@@ -407,7 +423,21 @@ public class MainController implements Initializable {
 
 	@FXML
 	void modficarCliente(ActionEvent event) {
-
+		if (txtDni.getLength() != 0 && txtNombre.getLength() != 0 && txtApellido.getLength() != 0
+				&& txtCelular.getLength() != 0) {
+			ClientesJson clienteOK = cargarCliente();
+			if (RESTCliente.putClienteModificar(clienteOK)) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Se modifico del CLIENTE con exito");
+				alert.setContentText("La operacion se completo con exito");
+				alert.show();
+				cargarTabla();
+			} else {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Error en al modificar del Cliente");
+				alert.show();
+			}
+		}
 	}
 
 	@FXML
@@ -420,20 +450,7 @@ public class MainController implements Initializable {
 	void altaCliente(ActionEvent event) {
 		if (txtDni.getLength() != 0 && txtNombre.getLength() != 0 && txtApellido.getLength() != 0
 				&& txtCelular.getLength() != 0) {
-			ClientesJson clienteOK = new ClientesJson();
-			Direccion direccion = new Direccion();
-			direccion.setPiso(Integer.parseInt(txtPiso.getText()));
-			direccion.setAltura(txtAltura.getText());
-			direccion.setCalle(txtCalle.getText());
-			direccion.setNroDepartamento(txtNro.getText());
-			clienteOK.setApellido(txtApellido.getText());
-			clienteOK.setNombre(txtNombre.getText());
-			clienteOK.setCuil(txtDni.getText());
-			clienteOK.setOtraInformacion(txtOInf.getText());
-			clienteOK.setEmail(txtMail.getText());
-			clienteOK.setTelefono(txtTelefono.getText());
-			clienteOK.setDireccion(direccion);
-			clienteOK.setCelular(txtCelular.getText());
+			ClientesJson clienteOK = cargarCliente();
 			if (RESTCliente.postClienteAdd(clienteOK)) {
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
 				alert.setTitle("Alta del CLIENTE con exito");
@@ -450,5 +467,23 @@ public class MainController implements Initializable {
 
 	}
 
+	private ClientesJson cargarCliente() {
+		ClientesJson clienteOK = new ClientesJson();
+		Direccion direccion = new Direccion();
+		direccion.setPiso(Integer.parseInt(txtPiso.getText()));
+		direccion.setAltura(txtAltura.getText());
+		direccion.setCalle(txtCalle.getText());
+		direccion.setNroDepartamento(txtNro.getText());
+		clienteOK.setApellido(txtApellido.getText());
+		clienteOK.setNombre(txtNombre.getText());
+		clienteOK.setCuil(txtDni.getText());
+		clienteOK.setOtraInformacion(txtOInf.getText());
+		clienteOK.setEmail(txtMail.getText());
+		clienteOK.setTelefono(txtTelefono.getText());
+		clienteOK.setDireccion(direccion);
+		clienteOK.setCelular(txtCelular.getText());
+		return clienteOK;
+	}
+	// -------------FIN Modulo Cliente------------- //
 	// <------ endRegion de los metodos FMXL --->
 }

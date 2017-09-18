@@ -134,30 +134,30 @@ public class ClientesController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		columDNI.setCellValueFactory(cellData -> cellData.getValue().getDni());
-		columNombre.setCellValueFactory(cellData -> cellData.getValue().getNombre());
-		columApellido.setCellValueFactory(cellData -> cellData.getValue().getApellido());
-		columTelefono.setCellValueFactory(cellData -> cellData.getValue().getTelefono());
-		columCalle.setCellValueFactory(cellData -> cellData.getValue().getCalle());
-		columAltura.setCellValueFactory(cellData -> cellData.getValue().getAltura());
-		columPsio.setCellValueFactory(cellData -> cellData.getValue().getPiso());
-		columNroDpt.setCellValueFactory(cellData -> cellData.getValue().getNroDepartamento());
-		columMil.setCellValueFactory(cellData -> cellData.getValue().getMail());
-		columCelular.setCellValueFactory(cellData -> cellData.getValue().getCelular());
-		columOtIn.setCellValueFactory(cellData -> cellData.getValue().getOtraInf());
-
-		List<ClientesJson> listCliente = RESTCliente.getClientes();
-		personsData.clear();
-		System.out.println("------------------->");
-		System.out.println(listCliente);
-		for (ClientesJson clientesJson : listCliente) {
-			personsData.add(new ClienteVo(clientesJson.getCuil(), clientesJson.getnombre(), clientesJson.getApellido(),
-					clientesJson.getTelefono(), clientesJson.getEmail(), clientesJson.getOtraInformacion(),
-					clientesJson.getCelular(), clientesJson.getDireccion()));
-		}
-		;
-		System.out.println(personsData);
-		tableClientes.setItems(personsData);
+//		columDNI.setCellValueFactory(cellData -> cellData.getValue().getDni());
+//		columNombre.setCellValueFactory(cellData -> cellData.getValue().getNombre());
+//		columApellido.setCellValueFactory(cellData -> cellData.getValue().getApellido());
+//		columTelefono.setCellValueFactory(cellData -> cellData.getValue().getTelefono());
+//		columCalle.setCellValueFactory(cellData -> cellData.getValue().getCalle());
+//		columAltura.setCellValueFactory(cellData -> cellData.getValue().getAltura());
+//		columPsio.setCellValueFactory(cellData -> cellData.getValue().getPiso());
+//		columNroDpt.setCellValueFactory(cellData -> cellData.getValue().getNroDepartamento());
+//		columMil.setCellValueFactory(cellData -> cellData.getValue().getMail());
+//		columCelular.setCellValueFactory(cellData -> cellData.getValue().getCelular());
+//		columOtIn.setCellValueFactory(cellData -> cellData.getValue().getOtraInf());
+//
+//		List<ClientesJson> listCliente = RESTCliente.getClientes();
+//		personsData.clear();
+//		System.out.println("------------------->");
+//		System.out.println(listCliente);
+//		for (ClientesJson clientesJson : listCliente) {
+//			personsData.add(new ClienteVo(clientesJson.getCuil(), clientesJson.getnombre(), clientesJson.getApellido(),
+//					clientesJson.getTelefono(), clientesJson.getEmail(), clientesJson.getOtraInformacion(),
+//					clientesJson.getCelular(), clientesJson.getDireccion()));
+//		}
+//		;
+//		System.out.println(personsData);
+//		tableClientes.setItems(personsData);
 	}
 
 	public void setDialogStage(Stage dialogStage) {
