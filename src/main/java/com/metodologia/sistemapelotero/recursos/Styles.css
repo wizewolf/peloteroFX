@@ -45,7 +45,7 @@
 	-fx-font: bold 1em System;
 	-fx-margin: 0 0 5 0;
 	-fx-font-style:blod;
-	-fx-background-color:#6af;
+	-fx-background-color:#39c0ba;
 	-fx-border-color:#000;
 	-fx-text-fill:#009;
 }
@@ -70,26 +70,26 @@
     -fx-background-color: ladder(
             red,
             black 20%,
-            derive(#561720,-30%) 30%
+            derive(#a50038,-30%) 30%
         ), 
         linear-gradient(
         to bottom,
-            ladder(#561720, 
-                derive(#561720,80%) 60%, 
+            ladder(#a50038, 
+                derive(#a50038,80%) 60%, 
                 white 82%) 0%,
-            ladder(#561720, 
-                derive(#561720,20%) 10%, 
-                derive(#561720,-10%) 80%) 100%
+            ladder(#ab6559, 
+                derive(#a50038,20%) 10%, 
+                derive(#a50038,-10%) 80%) 100%
         ), linear-gradient(
             to bottom,
-            derive(#561720,34%) 0%,
-            derive(#561720,-18%) 100%
+            derive(#a50038,34%) 0%,
+            derive(#a50038,-18%) 100%
         );
 }
 .titled-pane:expanded *.content{
 	-fx-background-color:#f5d9dd;
 }
-.titled-pane:collapse .content{
+.titled-pane:collapsed *.content{
 	-fx-background-color:#f5d9dd;
 }
 .text-field{
