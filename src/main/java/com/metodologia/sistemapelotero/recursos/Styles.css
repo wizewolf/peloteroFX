@@ -47,7 +47,7 @@
 	-fx-font-style:blod;
 	-fx-background-color:#39c0ba;
 	-fx-border-color:#000;
-	-fx-text-fill:#009;
+	/*-fx-text-fill:#009;*/
 }
 
 .fondo{

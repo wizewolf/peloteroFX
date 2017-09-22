@@ -30,6 +30,7 @@ import com.metodologia.sistemapelotero.modelos.ClientesJson;
 import com.metodologia.sistemapelotero.modelos.Direccion;
 import com.metodologia.sistemapelotero.modelos.REST.RESTCliente;
 import com.metodologia.sistemapelotero.modelos.entity.ClienteVo;
+import com.metodologia.sistemapelotero.modelos.entity.UsuariosVo;
 
 public class MainController implements Initializable {
 	// <------ Region de los controladores del FX --->
@@ -168,6 +169,45 @@ public class MainController implements Initializable {
 	private Button bntCancelar;
 	@FXML
 	private AnchorPane anchorPaneClientes;
+	@FXML
+    private AnchorPane anchorUsuario;
+
+    @FXML
+    private TextField txtUsuario;
+
+    @FXML
+    private TextField txtContraseña;
+
+    @FXML
+    private Button bntAceptar1;
+
+    @FXML
+    private Button bntCancelar2;
+
+    @FXML
+    private Button bntaltaCliente1;
+
+    @FXML
+    private Button bntBajaUsuario;
+
+    @FXML
+    private TableView<UsuariosVo> tablaUsuario;
+
+    @FXML
+    private TableColumn<UsuariosVo, String> columUsuarioId;
+
+    @FXML
+    private TableColumn<UsuariosVo, String> columUsuarioUsuario;
+
+    @FXML
+    private TableColumn<UsuariosVo, String> columUsuarioContraseña;
+
+    @FXML
+    private TableColumn<UsuariosVo, String> columUsuarioNombre;
+
+    @FXML
+    private TableColumn<UsuariosVo, String> columUsuarioMail;
+
 	// <------ EndRegion de los controladores del FX --->
 	// <------ Region de los Atrivutos --->
 	public boolean UsuarioAdmin;
