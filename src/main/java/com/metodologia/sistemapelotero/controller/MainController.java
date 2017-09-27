@@ -13,15 +13,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -33,6 +41,7 @@ import com.metodologia.sistemapelotero.modelos.entity.ClienteVo;
 import com.metodologia.sistemapelotero.modelos.entity.UsuariosVo;
 
 public class MainController implements Initializable {
+	
 	// <------ Region de los controladores del FX --->
 	@FXML
 	private AnchorPane panePrincipal;
@@ -171,6 +180,8 @@ public class MainController implements Initializable {
 	private AnchorPane anchorPaneClientes;
 	@FXML
     private AnchorPane anchorUsuario;
+	@FXML
+	private AnchorPane anchorpanereservadefecha;
 
     @FXML
     private TextField txtUsuario;
@@ -208,6 +219,63 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<UsuariosVo, String> columUsuarioMail;
 
+    @FXML
+    private TextField txtDniClienteBuscar;
+
+    @FXML
+    private TextField txtTematica;
+
+    @FXML
+    private ComboBox<?> cmbCombo;
+
+    @FXML
+    private DatePicker datePickerFiesta;
+
+    @FXML
+    private TextField txtChicos;
+
+    @FXML
+    private TextField txtAdultos;
+
+    @FXML
+    private Button masChos;
+
+    @FXML
+    private Button menosChicos;
+
+    @FXML
+    private Button masAdultos;
+
+    @FXML
+    private Button menosAdultos;
+
+    @FXML
+    private CheckBox ckFotografia;
+
+    @FXML
+    private CheckBox ckVideo;
+    
+    @FXML
+    private CheckBox ckPagoPacial;
+
+    @FXML
+    private Button bntCancelar1;
+
+    @FXML
+    private Button btnBuscarCliente;
+
+    @FXML
+    private TextField txtTotalPagar;
+
+    @FXML
+    private TextField txtParcialPago;
+
+    @FXML
+    private Button btnHacerRecerva;
+    @FXML
+    private Button btnCerrarReservaFiesta;
+
+
 	// <------ EndRegion de los controladores del FX --->
 	// <------ Region de los Atrivutos --->
 	public boolean UsuarioAdmin;
@@ -215,6 +283,8 @@ public class MainController implements Initializable {
 	private String str;
 	private ObservableList<ClienteVo> personsData = FXCollections.observableArrayList();
 	private ClienteVo cliente;
+	List<ClientesJson> clientesRes = RESTCliente.getClientes();
+	private ClientesJson clienteReserva;
 
 	// <------ EndRegion de los atrivutos --->
 	// <------ Region de los metodos set/get/initialize --->
@@ -337,11 +407,8 @@ public class MainController implements Initializable {
 		columCelular.setCellValueFactory(cellData -> cellData.getValue().getCelular());
 		columOtIn.setCellValueFactory(cellData -> cellData.getValue().getOtraInf());
 		try {
-			List<ClientesJson> listCliente = RESTCliente.getClientes();
 			personsData.clear();
-			System.out.println("------------------->");
-			System.out.println(listCliente);
-			for (ClientesJson clientesJson : listCliente) {
+			for (ClientesJson clientesJson : clientesRes) {
 				personsData.add(new ClienteVo(clientesJson.getId(), clientesJson.getCuil(), clientesJson.getnombre(),
 						clientesJson.getApellido(), clientesJson.getTelefono(), clientesJson.getEmail(),
 						clientesJson.getOtraInformacion(), clientesJson.getCelular(), clientesJson.getDireccion()));
@@ -435,6 +502,7 @@ public class MainController implements Initializable {
 			alert.setTitle("Baja del CLIENTE con exito");
 			alert.setContentText("La operacion se completo con exito");
 			alert.show();
+			clientesRes= RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -471,6 +539,7 @@ public class MainController implements Initializable {
 				alert.setTitle("Se modifico del CLIENTE con exito");
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
+				clientesRes= RESTCliente.getClientes();
 				cargarTabla();
 			} else {
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -497,6 +566,7 @@ public class MainController implements Initializable {
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
 			}
+			clientesRes= RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -525,5 +595,135 @@ public class MainController implements Initializable {
 		return clienteOK;
 	}
 	// -------------FIN Modulo Cliente------------- //
-	// <------ endRegion de los metodos FMXL --->
+	// <------ endRegion de los metodos FMXL --->    
+
+    @FXML
+    void altaUsuario(ActionEvent event) {
+
+    }
+
+  
+    @FXML
+    void bajaUsuario(ActionEvent event) {
+
+    }
+
+ 
+    @FXML
+    void cancelarAltaUsuario(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void modficarUsuario(ActionEvent event) {
+
+    }
+    @FXML
+    void buscarCliente(ActionEvent event) {
+    	boolean encontro=false;
+    	for (ClientesJson clientesJson : clientesRes) {
+			if (clientesJson.getCuil().contains(txtDniClienteBuscar.getText())) {
+				clienteReserva =clientesJson;
+				encontro = true;
+				break;
+			}
+		}
+    	if (encontro) {
+			txtDniClienteBuscar.setText(clienteReserva.getCuil());
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Encontro al Cliente");
+			alert.setContentText("El Cliente a sido cargado cerrectamente");
+			alert.show();
+		}else {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Error encontro al Cliente");
+			alert.setContentText("El DNi o CUIL no pertenece a un Cliente");
+			alert.show();
+		}
+    }
+    @FXML
+    void mostrarRegistroFiesta(ActionEvent event) {
+    	
+    	 final Callback<DatePicker, DateCell> dayCellFactory = 
+    	           new Callback<DatePicker, DateCell>() {
+    	               @Override
+    	                public DateCell call(final DatePicker datePicker) {
+    	                    return new DateCell() {
+    	                        @Override
+    	                        public void updateItem(LocalDate item, boolean empty) {
+    	                            super.updateItem(item, empty);
+    	                            Date input = new Date();
+    	                            Calendar cal = Calendar.getInstance();
+    	                            cal.setTime(input);
+    	                            cal.add(Calendar.DAY_OF_YEAR, 30);
+    	                            LocalDate fechaActual = LocalDate.of(cal.get(Calendar.YEAR),
+    	                                    cal.get(Calendar.MONTH) + 1,
+    	                                    cal.get(Calendar.DAY_OF_MONTH));
+    	                            if (item.isBefore(fechaActual)) {
+    	                                    setDisable(true);
+    	                                    setStyle("-fx-background-color: #ffc0cb;");
+    	                            }   
+    	                    }
+    	                };
+    	            }
+    	        };
+    	        datePickerFiesta.setDayCellFactory(dayCellFactory);
+    	        anchorpanereservadefecha.setVisible(true);
+    }
+    @FXML
+    void pagoParsial(ActionEvent event) {
+
+    }
+    @FXML
+    void cerrarGestionReservaFiesta(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("¿Desea terminar?");
+		alert.setHeaderText("¿Desea terminar con la reserva de la fiesta?");
+		ButtonType btAceptar = new ButtonType("Aceptar");
+		ButtonType btCancelar = new ButtonType("Cancelar");
+		alert.getButtonTypes().setAll(btAceptar, btCancelar);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == btAceptar) {
+			anchorpanereservadefecha.setVisible(false);
+			resetearCamposDeReserva();
+		} else {
+			// ... user chose CANCEL or closed the dialog
+		}
+    	
+    }
+
+	private void resetearCamposDeReserva() {
+		txtDniClienteBuscar.setText("");
+		datePickerFiesta.getEditor().clear();
+		datePickerFiesta.setValue(null);
+		txtChicos.setText("15");
+		txtAdultos.setText("0");
+		ckFotografia.setSelected(false);
+		ckVideo.setSelected(false);
+		ckPagoPacial.setSelected(false);
+		txtParcialPago.setText("");
+		txtTotalPagar.setText("");
+	}
+	   @FXML
+	    void restarAdulntos(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void restarChicos(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void sumarAdultos(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void sumarChicos(ActionEvent event) {
+
+	    }
 }
+
+    
