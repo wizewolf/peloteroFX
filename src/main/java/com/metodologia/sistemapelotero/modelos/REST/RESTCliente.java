@@ -2,6 +2,7 @@ package com.metodologia.sistemapelotero.modelos.REST;
 
 import com.google.gson.Gson;
 import com.metodologia.sistemapelotero.modelos.ClientesJson;
+import com.metodologia.sistemapelotero.modelos.UsuarioJson;
 import com.metodologia.sistemapelotero.modelos.entity.ClienteVo;
 
 import com.google.gson.Gson;
@@ -177,4 +178,40 @@ public class RESTCliente {
 			return false;
 		}
 	}
+	public static List<UsuarioJson> getUsuarios() {
+
+		try {
+			
+			URL url = new URL(WS_URI + "usuario");
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/json");
+
+			if (conn.getResponseCode() != 200) {
+				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+			String output;
+			List<UsuarioJson> list = null;
+			System.out.println("Output from Server .... \n");
+			while ((output = br.readLine()) != null) {
+				Gson gson = new Gson();
+				list = gson.fromJson(output, new TypeToken<List<UsuarioJson>>() {
+				}.getType());
+			}
+			
+			conn.disconnect();
+			list.forEach(x -> System.out.println(x));
+			return list;
+		} catch (MalformedURLException ex) {
+			System.err.println(ex.getMessage());
+		} catch (IOException | RuntimeException ex) {
+			System.err.println(ex.getMessage());
+		}
+		return null;
+	}
+
+	
 }

@@ -17,6 +17,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,13 +38,21 @@ import java.util.ResourceBundle;
 
 import com.metodologia.sistemapelotero.modelos.ClientesJson;
 import com.metodologia.sistemapelotero.modelos.Direccion;
+import com.metodologia.sistemapelotero.modelos.ItemsJSO;
+import com.metodologia.sistemapelotero.modelos.UsuarioJson;
 import com.metodologia.sistemapelotero.modelos.REST.RESTCliente;
 import com.metodologia.sistemapelotero.modelos.entity.ClienteVo;
 import com.metodologia.sistemapelotero.modelos.entity.UsuariosVo;
 
 public class MainController implements Initializable {
-	
+
 	// <------ Region de los controladores del FX --->
+
+	@FXML
+	private Button btnCerrarSecion2;
+	@FXML
+	private Label lblUsuario;
+
 	@FXML
 	private AnchorPane panePrincipal;
 
@@ -179,105 +189,138 @@ public class MainController implements Initializable {
 	@FXML
 	private AnchorPane anchorPaneClientes;
 	@FXML
-    private AnchorPane anchorUsuario;
+	private AnchorPane anchorUsuario;
 	@FXML
 	private AnchorPane anchorpanereservadefecha;
 
-    @FXML
-    private TextField txtUsuario;
+	@FXML
+	private TextField txtUsuario;
 
-    @FXML
-    private TextField txtContraseña;
+	@FXML
+	private TextField txtContraseña;
 
-    @FXML
-    private Button bntAceptar1;
+	@FXML
+	private Button bntAceptar1;
 
-    @FXML
-    private Button bntCancelar2;
+	@FXML
+	private Button bntCancelar2;
 
-    @FXML
-    private Button bntaltaCliente1;
+	@FXML
+	private Button bntaltaCliente1;
 
-    @FXML
-    private Button bntBajaUsuario;
+	@FXML
+	private Button bntBajaUsuario;
 
-    @FXML
-    private TableView<UsuariosVo> tablaUsuario;
+	@FXML
+	private TableView<UsuariosVo> tablaUsuario;
 
-    @FXML
-    private TableColumn<UsuariosVo, String> columUsuarioId;
+	@FXML
+	private TableColumn<UsuariosVo, String> columUsuarioId;
 
-    @FXML
-    private TableColumn<UsuariosVo, String> columUsuarioUsuario;
+	@FXML
+	private TableColumn<UsuariosVo, String> columUsuarioUsuario;
 
-    @FXML
-    private TableColumn<UsuariosVo, String> columUsuarioContraseña;
+	@FXML
+	private TableColumn<UsuariosVo, String> columUsuarioContraseña;
 
-    @FXML
-    private TableColumn<UsuariosVo, String> columUsuarioNombre;
+	@FXML
+	private TableColumn<UsuariosVo, String> columUsuarioNombre;
 
-    @FXML
-    private TableColumn<UsuariosVo, String> columUsuarioMail;
+	@FXML
+	private TableColumn<UsuariosVo, String> columUsuarioMail;
 
-    @FXML
-    private TextField txtDniClienteBuscar;
+	@FXML
+	private TextField txtDniClienteBuscar;
 
-    @FXML
-    private TextField txtTematica;
+	@FXML
+	private TextField txtTematica;
 
-    @FXML
-    private ComboBox<?> cmbCombo;
+	@FXML
+	private ComboBox<?> cmbCombo;
 
-    @FXML
-    private DatePicker datePickerFiesta;
+	@FXML
+	private DatePicker datePickerFiesta;
 
-    @FXML
-    private TextField txtChicos;
+	@FXML
+	private TextField txtChicos;
 
-    @FXML
-    private TextField txtAdultos;
+	@FXML
+	private TextField txtAdultos;
 
-    @FXML
-    private Button masChos;
+	@FXML
+	private Button masChos;
 
-    @FXML
-    private Button menosChicos;
+	@FXML
+	private Button menosChicos;
 
-    @FXML
-    private Button masAdultos;
+	@FXML
+	private Button masAdultos;
 
-    @FXML
-    private Button menosAdultos;
+	@FXML
+	private Button menosAdultos;
 
-    @FXML
-    private CheckBox ckFotografia;
+	@FXML
+	private CheckBox ckFotografia;
 
-    @FXML
-    private CheckBox ckVideo;
-    
-    @FXML
-    private CheckBox ckPagoPacial;
+	@FXML
+	private CheckBox ckVideo;
 
-    @FXML
-    private Button bntCancelar1;
+	@FXML
+	private CheckBox ckPagoPacial;
 
-    @FXML
-    private Button btnBuscarCliente;
+	@FXML
+	private Button bntCancelar1;
 
-    @FXML
-    private TextField txtTotalPagar;
+	@FXML
+	private Button btnBuscarCliente;
 
-    @FXML
-    private TextField txtParcialPago;
+	@FXML
+	private TextField txtTotalPagar;
 
-    @FXML
-    private Button btnHacerRecerva;
-    @FXML
-    private Button btnCerrarReservaFiesta;
+	@FXML
+	private TextField txtParcialPago;
 
+	@FXML
+	private Button btnHacerRecerva;
+	@FXML
+	private Button btnCerrarReservaFiesta;
+	@FXML
+	private AnchorPane anchorCombo;
 
+	@FXML
+	private TextField txtItem;
+
+	@FXML
+	private Button bntAceptar11;
+
+	@FXML
+	private Button bntCancelar21;
+
+	@FXML
+	private Button bntaltaCliente11;
+
+	@FXML
+	private Button bntBajaUsuario1;
+
+	@FXML
+	private Button btnAddItem;
+	@FXML
+	private ListView<ItemsJSO> lvItem;
+
+	@FXML
+	private TableView<?> tablaUsuario1;
+
+	@FXML
+	private TableColumn<?, ?> columUsuarioId1;
+
+	@FXML
+	private TableColumn<?, ?> columUsuarioUsuario1;
+
+	@FXML
+	private TableColumn<?, ?> columUsuarioContraseña1;
 	// <------ EndRegion de los controladores del FX --->
 	// <------ Region de los Atrivutos --->
+	public static List<UsuarioJson> usuarios;
 	public boolean UsuarioAdmin;
 	private Stage dialogStage;
 	private String str;
@@ -285,6 +328,7 @@ public class MainController implements Initializable {
 	private ClienteVo cliente;
 	List<ClientesJson> clientesRes = RESTCliente.getClientes();
 	private ClientesJson clienteReserva;
+	private UsuarioJson usuarioJSO;
 
 	// <------ EndRegion de los atrivutos --->
 	// <------ Region de los metodos set/get/initialize --->
@@ -323,6 +367,19 @@ public class MainController implements Initializable {
 
 	// <------ endRegion de los set/get/initialize --->
 	// <------ Region de los metodos FMXL --->
+	@FXML
+	void addItem(ActionEvent event) {
+		ObservableList<ItemsJSO> data = FXCollections.observableArrayList();
+		if (lvItem.getItems()==null) {
+			data.add(new ItemsJSO(txtItem.getText()));
+			lvItem.setItems(data);
+		}else {
+			data=lvItem.getItems();
+			data.add(new ItemsJSO(txtItem.getText()));
+		}
+		txtItem.setText("");
+	}
+
 	@FXML
 	void Cerrar(ActionEvent event) {
 		Platform.exit();
@@ -502,7 +559,7 @@ public class MainController implements Initializable {
 			alert.setTitle("Baja del CLIENTE con exito");
 			alert.setContentText("La operacion se completo con exito");
 			alert.show();
-			clientesRes= RESTCliente.getClientes();
+			clientesRes = RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -539,7 +596,7 @@ public class MainController implements Initializable {
 				alert.setTitle("Se modifico del CLIENTE con exito");
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
-				clientesRes= RESTCliente.getClientes();
+				clientesRes = RESTCliente.getClientes();
 				cargarTabla();
 			} else {
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -566,7 +623,7 @@ public class MainController implements Initializable {
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
 			}
-			clientesRes= RESTCliente.getClientes();
+			clientesRes = RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -595,89 +652,88 @@ public class MainController implements Initializable {
 		return clienteOK;
 	}
 	// -------------FIN Modulo Cliente------------- //
-	// <------ endRegion de los metodos FMXL --->    
+	// <------ endRegion de los metodos FMXL --->
 
-    @FXML
-    void altaUsuario(ActionEvent event) {
+	@FXML
+	void altaUsuario(ActionEvent event) {
 
-    }
+	}
 
-  
-    @FXML
-    void bajaUsuario(ActionEvent event) {
+	@FXML
+	void bajaUsuario(ActionEvent event) {
 
-    }
+	}
 
- 
-    @FXML
-    void cancelarAltaUsuario(ActionEvent event) {
+	@FXML
+	void cancelarAltaUsuario(ActionEvent event) {
 
-    }
+	}
 
+	@FXML
+	void modficarUsuario(ActionEvent event) {
 
-    @FXML
-    void modficarUsuario(ActionEvent event) {
+	}
 
-    }
-    @FXML
-    void buscarCliente(ActionEvent event) {
-    	boolean encontro=false;
-    	for (ClientesJson clientesJson : clientesRes) {
+	@FXML
+	void buscarCliente(ActionEvent event) {
+		boolean encontro = false;
+		for (ClientesJson clientesJson : clientesRes) {
 			if (clientesJson.getCuil().contains(txtDniClienteBuscar.getText())) {
-				clienteReserva =clientesJson;
+				clienteReserva = clientesJson;
 				encontro = true;
 				break;
 			}
 		}
-    	if (encontro) {
+		if (encontro) {
 			txtDniClienteBuscar.setText(clienteReserva.getCuil());
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Encontro al Cliente");
 			alert.setContentText("El Cliente a sido cargado cerrectamente");
 			alert.show();
-		}else {
+		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setTitle("Error encontro al Cliente");
 			alert.setContentText("El DNi o CUIL no pertenece a un Cliente");
 			alert.show();
 		}
-    }
-    @FXML
-    void mostrarRegistroFiesta(ActionEvent event) {
-    	
-    	 final Callback<DatePicker, DateCell> dayCellFactory = 
-    	           new Callback<DatePicker, DateCell>() {
-    	               @Override
-    	                public DateCell call(final DatePicker datePicker) {
-    	                    return new DateCell() {
-    	                        @Override
-    	                        public void updateItem(LocalDate item, boolean empty) {
-    	                            super.updateItem(item, empty);
-    	                            Date input = new Date();
-    	                            Calendar cal = Calendar.getInstance();
-    	                            cal.setTime(input);
-    	                            cal.add(Calendar.DAY_OF_YEAR, 30);
-    	                            LocalDate fechaActual = LocalDate.of(cal.get(Calendar.YEAR),
-    	                                    cal.get(Calendar.MONTH) + 1,
-    	                                    cal.get(Calendar.DAY_OF_MONTH));
-    	                            if (item.isBefore(fechaActual)) {
-    	                                    setDisable(true);
-    	                                    setStyle("-fx-background-color: #ffc0cb;");
-    	                            }   
-    	                    }
-    	                };
-    	            }
-    	        };
-    	        datePickerFiesta.setDayCellFactory(dayCellFactory);
-    	        anchorpanereservadefecha.setVisible(true);
-    }
-    @FXML
-    void pagoParsial(ActionEvent event) {
+	}
 
-    }
-    @FXML
-    void cerrarGestionReservaFiesta(ActionEvent event) {
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
+	@FXML
+	void mostrarRegistroFiesta(ActionEvent event) {
+
+		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+			@Override
+			public DateCell call(final DatePicker datePicker) {
+				return new DateCell() {
+					@Override
+					public void updateItem(LocalDate item, boolean empty) {
+						super.updateItem(item, empty);
+						Date input = new Date();
+						Calendar cal = Calendar.getInstance();
+						cal.setTime(input);
+						cal.add(Calendar.DAY_OF_YEAR, 30);
+						LocalDate fechaActual = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1,
+								cal.get(Calendar.DAY_OF_MONTH));
+						if (item.isBefore(fechaActual)) {
+							setDisable(true);
+							setStyle("-fx-background-color: #ffc0cb;");
+						}
+					}
+				};
+			}
+		};
+		datePickerFiesta.setDayCellFactory(dayCellFactory);
+		anchorpanereservadefecha.setVisible(true);
+	}
+
+	@FXML
+	void pagoParsial(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cerrarGestionReservaFiesta(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("¿Desea terminar?");
 		alert.setHeaderText("¿Desea terminar con la reserva de la fiesta?");
 		ButtonType btAceptar = new ButtonType("Aceptar");
@@ -690,8 +746,8 @@ public class MainController implements Initializable {
 		} else {
 			// ... user chose CANCEL or closed the dialog
 		}
-    	
-    }
+
+	}
 
 	private void resetearCamposDeReserva() {
 		txtDniClienteBuscar.setText("");
@@ -705,25 +761,38 @@ public class MainController implements Initializable {
 		txtParcialPago.setText("");
 		txtTotalPagar.setText("");
 	}
-	   @FXML
-	    void restarAdulntos(ActionEvent event) {
 
-	    }
+	@FXML
+	void restarAdulntos(ActionEvent event) {
+		int adultos = Integer.parseInt(txtAdultos.getText());
+		if (adultos > 0) {
+			adultos--;
+			// restar valor al total
+		}
+	}
 
-	    @FXML
-	    void restarChicos(ActionEvent event) {
+	@FXML
+	void restarChicos(ActionEvent event) {
 
-	    }
+	}
 
-	    @FXML
-	    void sumarAdultos(ActionEvent event) {
+	@FXML
+	void sumarAdultos(ActionEvent event) {
+		int adultos = Integer.parseInt(txtAdultos.getText());
+		if (adultos > 0) {
+			adultos--;
+			// restar valor al total
+		}
+	}
 
-	    }
+	@FXML
+	void sumarChicos(ActionEvent event) {
 
-	    @FXML
-	    void sumarChicos(ActionEvent event) {
+	}
 
-	    }
+	public void setUsuario(UsuarioJson usuariosJason) {
+		usuarioJSO = usuariosJason;
+		lblUsuario.setText(usuarioJSO.getUsername());
+
+	}
 }
-
-    

@@ -49,7 +49,15 @@
 	-fx-border-color:#000;
 	/*-fx-text-fill:#009;*/
 }
-
+.botonSal{
+	-fx-background-color:none;
+	-fx-text-fill:#fff
+	
+}
+.botonSal:hover{
+	-fx-font-style:blod;
+	-fx-background-color:#39c0ba;
+}
 .fondo{
 	-fx-background-color:#558986;
 	-fx-background-size:cover;

@@ -1,7 +1,10 @@
 package com.metodologia.sistemapelotero.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
+
+import com.metodologia.sistemapelotero.modelos.UsuarioJson;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -51,13 +54,28 @@ public class Login {
 				stageMain.setTitle("Travesuras Infantiles");
 				stageMain.setScene(scene);
 				stageMain.setMaximized(true);
+				System.out.println(MainController.usuarios.toString());
+				for (UsuarioJson usuariosJason : MainController.usuarios) {
+					System.out.println("usurJSO"+usuariosJason.getUsername());
+					System.out.println("usur"+usuario);
+					System.out.println("pass"+pass);
+					
+					if (usuariosJason.getUsername().equals(usuario) && usuariosJason.getPassword().equals(pass)) {
+						System.out.println("encontro usuario");
+						mainController.setUsuario(usuariosJason);
+						stageMain.show();
+						panelLogin.getScene().getWindow().hide();
+					}else {
+						System.out.println("no");
+					}
+				}
 //				if (usuario.equals("admin") && pass.equals("admin")) {
 //					mainController.setUsuarioAdmin(true);
 //				}else {
 //					mainController.setUsuarioAdmin(false);
 //				}
-				stageMain.show();
-				panelLogin.getScene().getWindow().hide();
+				
+				
 			} catch (IOException e) {
 
 				e.printStackTrace();

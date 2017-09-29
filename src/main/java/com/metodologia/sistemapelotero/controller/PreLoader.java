@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.metodologia.sistemapelotero.App;
+import com.metodologia.sistemapelotero.modelos.REST.RESTCliente;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -51,8 +52,8 @@ public class PreLoader implements Initializable {
 		public void run() {
 			try {
 
-				Thread.sleep(5000);
-
+				//Thread.sleep(5000);
+				MainController.usuarios=RESTCliente.getUsuarios();
 				Platform.runLater(new Runnable() {
 
 					public void run() {
@@ -73,7 +74,7 @@ public class PreLoader implements Initializable {
 					}
 				});
 
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				System.out.println("InterruptedException");
 				e.printStackTrace();
 			}
