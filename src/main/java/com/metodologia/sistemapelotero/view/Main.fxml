@@ -32,11 +32,6 @@
                            <children>
                               <VBox prefHeight="242.0" prefWidth="202.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnNuevoUsuario" mnemonicParsing="false" onAction="#nuevoUsuario" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="NUEVO USUARIO">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" top="2.0" />
-                                       </VBox.margin>
-                                    </Button>
                                     <Button fx:id="btnModificarUsuario" mnemonicParsing="false" onAction="#GestionarUsuarios" prefHeight="30.0" prefWidth="182.0" styleClass="botonMenu" text="GESTIONAR USUARIO">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="2.0" />
@@ -281,9 +276,9 @@
                               <TextField fx:id="txtUsuario" layoutX="64.0" layoutY="10.0" prefHeight="27.0" prefWidth="202.0" />
                               <Label layoutX="14.0" layoutY="48.0" text="Contraseña:" />
                               <TextField fx:id="txtContraseña" layoutX="79.0" layoutY="44.0" prefHeight="27.0" prefWidth="189.0" />
-                              <Button fx:id="bntAceptar1" disable="true" layoutX="101.0" layoutY="80.0" mnemonicParsing="false" onAction="#modficarUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar usuario" />
-                              <Button fx:id="bntCancelar2" disable="true" layoutX="186.0" layoutY="80.0" mnemonicParsing="false" onAction="#cancelarAltaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
-                              <Button fx:id="bntaltaCliente1" disable="true" layoutX="101.0" layoutY="80.0" mnemonicParsing="false" onAction="#altaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Usuario" />
+                              <Button fx:id="bntModificarUsuario" disable="true" layoutX="101.0" layoutY="80.0" mnemonicParsing="false" onAction="#modficarUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar usuario" />
+                              <Button fx:id="bntCancelarAltaUsuario" disable="true" layoutX="186.0" layoutY="80.0" mnemonicParsing="false" onAction="#cancelarAltaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
+                              <Button fx:id="bntaltaUsuario" disable="true" layoutX="101.0" layoutY="80.0" mnemonicParsing="false" onAction="#altaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Usuario" />
                               <Button fx:id="bntBajaUsuario" disable="true" layoutX="15.0" layoutY="80.0" mnemonicParsing="false" onAction="#bajaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" />
                            </children>
                         </AnchorPane>
@@ -292,7 +287,7 @@
                 <AnchorPane layoutX="477.0" minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutY="67.0" prefHeight="671.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <TableView fx:id="tablaUsuario" editable="true" layoutX="68.0" layoutY="10.0" prefHeight="661.0" prefWidth="267.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tablaUsuario" editable="true" layoutX="68.0" layoutY="12.0" prefHeight="649.0" prefWidth="267.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="12.0">
                            <columns>
                               <TableColumn fx:id="columUsuarioId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
                               <TableColumn fx:id="columUsuarioUsuario" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Usuario" />
@@ -306,6 +301,11 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+            <Button fx:id="btnCerrarUsuario" mnemonicParsing="false" onAction="#cerrarGestionUsuario" prefHeight="17.0" prefWidth="14.0" text="X" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font size="5.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane layoutY="748.0" prefHeight="10.0" prefWidth="1024.0" style="-fx-background-color: #fff; -fx-border-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -370,7 +370,7 @@
                         <CheckBox fx:id="ckVideo" layoutX="13.0" layoutY="57.0" mnemonicParsing="false" text="Servicio de Video" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="bntCancelar1" disable="true" layoutX="262.0" layoutY="329.0" mnemonicParsing="false" onAction="#cancelarAltaCliente" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" visible="false" />
+                  <Button fx:id="bntCancelarFiesta" disable="true" layoutX="196.0" layoutY="461.0" mnemonicParsing="false" onAction="#cancelarAltaFiesta" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
                   <Button fx:id="btnBuscarCliente" layoutX="264.0" layoutY="15.0" mnemonicParsing="false" onAction="#buscarCliente" text="Buscar Cliente" />
                   <AnchorPane layoutX="41.0" layoutY="361.0" prefHeight="79.0" prefWidth="566.0" style="-fx-border-color: #fff;" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="361.0">
                      <children>
@@ -381,7 +381,7 @@
                         <Label layoutX="316.0" layoutY="45.0" text="Pago Parcial:" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="btnHacerRecerva" layoutX="292.0" layoutY="466.0" mnemonicParsing="false" text="Hacer Recerva" />
+                  <Button fx:id="btnHacerRecerva" layoutX="292.0" layoutY="466.0" mnemonicParsing="false" onAction="#hacerReserva" text="Hacer Recerva" />
                   <Button fx:id="btnCerrarReservaFiesta" mnemonicParsing="false" onAction="#cerrarGestionReservaFiesta" prefHeight="17.0" prefWidth="14.0" text="X" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font size="5.0" />
@@ -391,22 +391,29 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorCombo" layoutX="202.0" layoutY="60.0" prefHeight="691.0" prefWidth="822.0">
+      <AnchorPane fx:id="anchorCombo" layoutX="202.0" layoutY="60.0" prefHeight="691.0" prefWidth="822.0" visible="false" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="0.0">
          <children>
+            <Button fx:id="btnCerrarCombo" mnemonicParsing="false" onAction="#cerrarGestionCombo" prefHeight="17.0" prefWidth="14.0" text="X" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font size="5.0" />
+               </font>
+            </Button>
             <AnchorPane prefHeight="23.0" prefWidth="200.0" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <AnchorPane layoutY="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane layoutX="29.0" layoutY="142.0" prefHeight="308.0" prefWidth="479.0" style="-fx-background-color: #00b4cb;" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="142.0">
+                        <AnchorPane layoutX="29.0" layoutY="142.0" prefHeight="339.0" prefWidth="489.0" style="-fx-background-color: #00b4cb;" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="142.0">
                            <children>
                               <Label layoutX="14.0" layoutY="14.0" text="Items:" />
-                              <TextField fx:id="txtItem" layoutX="64.0" layoutY="10.0" prefHeight="27.0" prefWidth="376.0" />
-                              <ListView fx:id="lvItem" editable="true" layoutX="10.0" layoutY="58.0" prefHeight="200.0" prefWidth="462.0" />
-                              <Button fx:id="bntAceptar11" disable="true" layoutX="97.0" layoutY="273.0" mnemonicParsing="false" onAction="#modficarUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar usuario" />
-                              <Button fx:id="bntCancelar21" disable="true" layoutX="182.0" layoutY="273.0" mnemonicParsing="false" onAction="#cancelarAltaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
-                              <Button fx:id="bntaltaCliente11" disable="true" layoutX="97.0" layoutY="273.0" mnemonicParsing="false" onAction="#altaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Usuario" />
-                              <Button fx:id="bntBajaUsuario1" disable="true" layoutX="11.0" layoutY="273.0" mnemonicParsing="false" onAction="#bajaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" />
+                              <TextField fx:id="txtItem" layoutX="64.0" layoutY="10.0" prefHeight="27.0" prefWidth="362.0" promptText="Ingrese el item del combo" />
+                              <ListView fx:id="lvItem" editable="true" layoutX="10.0" layoutY="58.0" prefHeight="200.0" prefWidth="468.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="11.0" />
+                              <Button fx:id="bntModificarCombo" disable="true" layoutX="203.0" layoutY="281.0" mnemonicParsing="false" onAction="#modficarCombo" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar Combo" AnchorPane.bottomAnchor="5.0" />
+                              <Button fx:id="bntCancelarCombo" disable="true" layoutX="288.0" layoutY="281.0" mnemonicParsing="false" onAction="#cancelarAltaCombo" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" AnchorPane.bottomAnchor="5.0" />
+                              <Button fx:id="bntaltaCombo" disable="true" layoutX="203.0" layoutY="281.0" mnemonicParsing="false" onAction="#altaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Combo" AnchorPane.bottomAnchor="5.0" />
+                              <Button fx:id="bntBajaCombo" disable="true" layoutX="117.0" layoutY="281.0" mnemonicParsing="false" onAction="#bajaCombo" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" AnchorPane.bottomAnchor="5.0" />
+                              <TextField layoutX="64.0" layoutY="265.0" prefHeight="27.0" prefWidth="189.0" promptText="Precio" />
+                              <Label layoutX="22.0" layoutY="270.0" text="Precio:" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -415,14 +422,16 @@
                      <children>
                         <AnchorPane layoutY="67.0" prefHeight="671.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="btnAddItem" layoutX="-3.0" layoutY="152.0" mnemonicParsing="false" onAction="#addItem" text="+" />
+                              <Button fx:id="btnAddItem" layoutX="-20.0" layoutY="152.0" mnemonicParsing="false" onAction="#addItem" text="+" />
+                              <Button fx:id="btnRemoveItem1" layoutX="6.0" layoutY="152.0" mnemonicParsing="false" onAction="#removeItem" text="-" />
                            </children>
                         </AnchorPane>
-                        <TableView fx:id="tablaUsuario1" editable="true" layoutX="68.0" layoutY="10.0" prefHeight="661.0" prefWidth="267.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tablaCombo" editable="true" layoutX="68.0" layoutY="12.0" prefHeight="649.0" prefWidth="267.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="12.0">
                            <columns>
-                              <TableColumn fx:id="columUsuarioId1" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
-                              <TableColumn fx:id="columUsuarioUsuario1" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Usuario" />
-                              <TableColumn fx:id="columUsuarioContraseña1" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Contraseña" />
+                              <TableColumn fx:id="columCombooId1" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                              <TableColumn fx:id="columComboCombo" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Combo" />
+                              <TableColumn fx:id="columcomboItems" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Items" />
+                              <TableColumn fx:id="columcomboPrecio" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Precio" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

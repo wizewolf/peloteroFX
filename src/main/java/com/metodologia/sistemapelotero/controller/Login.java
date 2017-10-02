@@ -63,6 +63,13 @@ public class Login {
 					if (usuariosJason.getUsername().equals(usuario) && usuariosJason.getPassword().equals(pass)) {
 						System.out.println("encontro usuario");
 						mainController.setUsuario(usuariosJason);
+						if (usuariosJason.isAdmin()) {
+							System.out.println("es admin");
+							mainController.setUsuarioAdmin(true);
+						}else {
+							System.out.println("no es admin");
+							mainController.setUsuarioAdmin(false);
+						}
 						stageMain.show();
 						panelLogin.getScene().getWindow().hide();
 					}else {

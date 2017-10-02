@@ -37,8 +37,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.metodologia.sistemapelotero.modelos.ClientesJson;
+import com.metodologia.sistemapelotero.modelos.ComboJson;
 import com.metodologia.sistemapelotero.modelos.Direccion;
 import com.metodologia.sistemapelotero.modelos.ItemsJSO;
+import com.metodologia.sistemapelotero.modelos.TematicaJson;
 import com.metodologia.sistemapelotero.modelos.UsuarioJson;
 import com.metodologia.sistemapelotero.modelos.REST.RESTCliente;
 import com.metodologia.sistemapelotero.modelos.entity.ClienteVo;
@@ -47,17 +49,8 @@ import com.metodologia.sistemapelotero.modelos.entity.UsuariosVo;
 public class MainController implements Initializable {
 
 	// <------ Region de los controladores del FX --->
-
-	@FXML
-	private Button btnCerrarSecion2;
-	@FXML
-	private Label lblUsuario;
-
 	@FXML
 	private AnchorPane panePrincipal;
-
-	@FXML
-	private Button btnNuevoUsuario;
 
 	@FXML
 	private Button btnModificarUsuario;
@@ -67,9 +60,6 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button btnSalir;
-
-	@FXML
-	private Button btnNuevoCliente;
 
 	@FXML
 	private Button btnTodosLosClientes;
@@ -90,16 +80,19 @@ public class MainController implements Initializable {
 	private Button btnBebidas;
 
 	@FXML
+	private Button btnBebidas1;
+
+	@FXML
 	private Button btnCambiarPrecios;
 
 	@FXML
-	private HBox hBox;
+	private Label lblUsuario;
 
 	@FXML
-	private Button bntBaja;
+	private Button btnCerrarSecion2;
 
 	@FXML
-	private Button bntModificacion;
+	private AnchorPane anchorPaneClientes;
 
 	@FXML
 	private Button btnCerrarClientes;
@@ -147,6 +140,9 @@ public class MainController implements Initializable {
 	private TableColumn<ClienteVo, String> columCelular;
 
 	@FXML
+	private HBox hBox;
+
+	@FXML
 	private TextField txtDni;
 
 	@FXML
@@ -181,17 +177,18 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button bntAceptar;
+
+	@FXML
+	private Button bntCancelar;
+
 	@FXML
 	private Button bntaltaCliente;
 
 	@FXML
-	private Button bntCancelar;
-	@FXML
-	private AnchorPane anchorPaneClientes;
+	private Button bntBaja;
+
 	@FXML
 	private AnchorPane anchorUsuario;
-	@FXML
-	private AnchorPane anchorpanereservadefecha;
 
 	@FXML
 	private TextField txtUsuario;
@@ -200,17 +197,16 @@ public class MainController implements Initializable {
 	private TextField txtContraseña;
 
 	@FXML
-	private Button bntAceptar1;
+	private Button bntModificarUsuario;
 
 	@FXML
-	private Button bntCancelar2;
+	private Button bntCancelarAltaUsuario;
 
 	@FXML
-	private Button bntaltaCliente1;
+	private Button bntaltaUsuario;
 
 	@FXML
 	private Button bntBajaUsuario;
-
 	@FXML
 	private TableView<UsuariosVo> tablaUsuario;
 
@@ -230,16 +226,22 @@ public class MainController implements Initializable {
 	private TableColumn<UsuariosVo, String> columUsuarioMail;
 
 	@FXML
+	private Button btnCerrarUsuario;
+
+	@FXML
+	private AnchorPane anchorpanereservadefecha;
+
+	@FXML
 	private TextField txtDniClienteBuscar;
 
 	@FXML
-	private TextField txtTematica;
-
-	@FXML
-	private ComboBox<?> cmbCombo;
+	private ComboBox<ComboJson> cmbCombo;
 
 	@FXML
 	private DatePicker datePickerFiesta;
+
+	@FXML
+	private ComboBox<TematicaJson> cmbTematica;
 
 	@FXML
 	private TextField txtChicos;
@@ -266,13 +268,13 @@ public class MainController implements Initializable {
 	private CheckBox ckVideo;
 
 	@FXML
-	private CheckBox ckPagoPacial;
-
-	@FXML
-	private Button bntCancelar1;
+	private Button bntCancelarFiesta;
 
 	@FXML
 	private Button btnBuscarCliente;
+
+	@FXML
+	private CheckBox ckPagoPacial;
 
 	@FXML
 	private TextField txtTotalPagar;
@@ -282,42 +284,53 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button btnHacerRecerva;
+
 	@FXML
 	private Button btnCerrarReservaFiesta;
+
 	@FXML
 	private AnchorPane anchorCombo;
+
+	@FXML
+	private Button btnCerrarCombo;
 
 	@FXML
 	private TextField txtItem;
 
 	@FXML
-	private Button bntAceptar11;
-
-	@FXML
-	private Button bntCancelar21;
-
-	@FXML
-	private Button bntaltaCliente11;
-
-	@FXML
-	private Button bntBajaUsuario1;
-
-	@FXML
-	private Button btnAddItem;
-	@FXML
 	private ListView<ItemsJSO> lvItem;
 
 	@FXML
-	private TableView<?> tablaUsuario1;
+	private Button bntModificarCombo;
 
 	@FXML
-	private TableColumn<?, ?> columUsuarioId1;
+	private Button bntCancelarCombo;
 
 	@FXML
-	private TableColumn<?, ?> columUsuarioUsuario1;
+	private Button bntaltaCombo;
 
 	@FXML
-	private TableColumn<?, ?> columUsuarioContraseña1;
+	private Button bntBajaCombo;
+
+	@FXML
+	private Button btnAddItem;
+
+	@FXML
+	private Button btnRemoveItem1;
+
+	@FXML
+	private TableView<?> tablaCombo;
+
+	@FXML
+	private TableColumn<ComboJson, String> columCombooId1;
+
+	@FXML
+	private TableColumn<ComboJson, String> columComboCombo;
+
+	@FXML
+	private TableColumn<ComboJson, String> columcomboItems;
+	@FXML
+	private TableColumn<ComboJson, String> columcomboPrecio;
 	// <------ EndRegion de los controladores del FX --->
 	// <------ Region de los Atrivutos --->
 	public static List<UsuarioJson> usuarios;
@@ -370,11 +383,11 @@ public class MainController implements Initializable {
 	@FXML
 	void addItem(ActionEvent event) {
 		ObservableList<ItemsJSO> data = FXCollections.observableArrayList();
-		if (lvItem.getItems()==null) {
+		if (lvItem.getItems() == null) {
 			data.add(new ItemsJSO(txtItem.getText()));
 			lvItem.setItems(data);
-		}else {
-			data=lvItem.getItems();
+		} else {
+			data = lvItem.getItems();
 			data.add(new ItemsJSO(txtItem.getText()));
 		}
 		txtItem.setText("");
@@ -538,13 +551,9 @@ public class MainController implements Initializable {
 
 	@FXML
 	void GestionarUsuarios(ActionEvent event) {
-
+		anchorUsuario.setVisible(true);
 	}
 
-	@FXML
-	void nuevoUsuario(ActionEvent event) {
-
-	}
 
 	@FXML
 	void aceptar(ActionEvent event) {
@@ -795,4 +804,71 @@ public class MainController implements Initializable {
 		lblUsuario.setText(usuarioJSO.getUsername());
 
 	}
+
+	@FXML
+	void bajaCombo(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cancelarAltaCombo(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cancelarAltaFiesta(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cerrarGestionCombo(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("¿Desea terminar?");
+		alert.setHeaderText("¿Desea terminar con la carga de combos?");
+		ButtonType btAceptar = new ButtonType("Aceptar");
+		ButtonType btCancelar = new ButtonType("Cancelar");
+		alert.getButtonTypes().setAll(btAceptar, btCancelar);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == btAceptar) {
+			anchorPaneClientes.setVisible(false);
+		} else {
+			// ... user chose CANCEL or closed the dialog
+		}
+
+	}
+
+	@FXML
+	void cerrarGestionUsuario(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("¿Desea terminar?");
+		alert.setHeaderText("¿Desea terminar con la gestion de Usuario?");
+		ButtonType btAceptar = new ButtonType("Aceptar");
+		ButtonType btCancelar = new ButtonType("Cancelar");
+		alert.getButtonTypes().setAll(btAceptar, btCancelar);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == btAceptar) {
+			anchorPaneClientes.setVisible(false);
+		} else {
+			// ... user chose CANCEL or closed the dialog
+		}
+
+	}
+
+	@FXML
+	void hacerReserva(ActionEvent event) {
+
+	}
+
+	@FXML
+	void modficarCombo(ActionEvent event) {
+
+	}
+
+	@FXML
+	void removeItem(ActionEvent event) {
+
+	}
+
+	
+
 }

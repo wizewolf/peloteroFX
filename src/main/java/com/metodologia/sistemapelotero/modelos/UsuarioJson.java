@@ -8,13 +8,14 @@ public class UsuarioJson {
  * 
  **/
 	private int id;
-	private String username,password,rol;
+	private String username,password;
+	private boolean admin;
 	
-	public UsuarioJson(int id, String username, String password,String rol) {
+	public UsuarioJson(int id, String username, String password,boolean admin) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.setRol(rol);
+		this.admin=admin;
 	}
 	public int getId() {
 		return id;
@@ -38,11 +39,11 @@ public class UsuarioJson {
 	public String toString() {
 		return "UsuarioJson [id=" + id + ", username=" + username + ", password=" + password + "]";
 	}
-	public String getRol() {
-		return rol;
+	public boolean isAdmin() {
+		return admin;
 	}
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 	
 	
