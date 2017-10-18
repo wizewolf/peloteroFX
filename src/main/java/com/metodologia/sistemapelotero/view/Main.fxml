@@ -24,7 +24,7 @@
    <children>
       <AnchorPane layoutY="58.0" prefHeight="342.0" prefWidth="200.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="545.0" AnchorPane.topAnchor="58.0">
          <children>
-            <Accordion layoutX="-1.0" style="-fx-background-color: #561720;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Accordion layoutX="-1.0" style="-fx-background-color: #4989C1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
               <panes>
                 <TitledPane animated="false" text="GESTIÓN DE USUARIOS">
                   <content>
@@ -117,11 +117,6 @@
                                        </VBox.margin>
                                     </Button>
                                     <Button fx:id="btnBebidas1" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="VENDER BEBIDAS" />
-                                    <Button fx:id="btnCambiarPrecios" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="CAMBIAR PRECIOS">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </VBox.margin>
-                                    </Button>
                                  </children>
                               </VBox>
                            </children>
@@ -178,7 +173,7 @@
                            <children>
                               <TableView fx:id="tableClientes" layoutX="-8.0" minHeight="-Infinity" prefHeight="350.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="5.0">
                                  <columns>
-                                    <TableColumn fx:id="columId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                                    <TableColumn fx:id="columClienteId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
                                     <TableColumn fx:id="columNombre" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
                                     <TableColumn fx:id="columApellido" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Apellido" />
                                     <TableColumn fx:id="columDNI" editable="false" prefWidth="93.0" resizable="false" sortable="false" text="DNI/C.U.I.L." />
@@ -265,7 +260,6 @@
       </AnchorPane>
       <AnchorPane fx:id="anchorUsuario" prefHeight="691.0" prefWidth="822.0" visible="false" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <children>
-            <AnchorPane prefHeight="23.0" prefWidth="200.0" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <AnchorPane layoutY="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                <children>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
@@ -428,7 +422,7 @@
                         </AnchorPane>
                         <TableView fx:id="tablaCombo" editable="true" layoutX="68.0" layoutY="12.0" prefHeight="649.0" prefWidth="267.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="12.0">
                            <columns>
-                              <TableColumn fx:id="columCombooId1" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                              <TableColumn fx:id="columCombooId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
                               <TableColumn fx:id="columComboCombo" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Combo" />
                               <TableColumn fx:id="columcomboPrecio" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Precio" />
                               <TableColumn fx:id="columcomboItems" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Items" />
@@ -441,6 +435,180 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPaneFiestaXClientes" layoutX="205.0" layoutY="58.0" prefHeight="691.0" prefWidth="820.0" visible="false" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <SplitPane dividerPositions="0.55" orientation="VERTICAL" prefHeight="691.0" prefWidth="822.0" style="-fx-background-color: #00b4cb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                  <AnchorPane minHeight="-Infinity" prefHeight="100.0" prefWidth="160.0">
+                     <children>
+                        <Button fx:id="btnCerrarFiestaxClientes" mnemonicParsing="false" onAction="#cerrarGestionFiestaxClientes" prefHeight="17.0" prefWidth="14.0" text="X" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                           <font>
+                              <Font size="5.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane minHeight="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                           <children>
+                              <TableView fx:id="tableFiestaClientes" focusTraversable="false" layoutX="-8.0" minHeight="-Infinity" prefHeight="350.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="5.0">
+                                 <columns>
+                                    <TableColumn fx:id="columFiestaId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                                    <TableColumn fx:id="columCantChicos" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="cant. chicos" />
+                                    <TableColumn fx:id="columCantAdultos" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="cant. adultos" />
+                                    <TableColumn fx:id="columCost" editable="false" prefWidth="93.0" resizable="false" sortable="false" text="costo ($)" />
+                                    <TableColumn fx:id="columDireccion1" editable="false" prefWidth="119.0" resizable="false" sortable="false" text="turno">
+                                       <columns>
+                                          <TableColumn fx:id="columTurno1" prefWidth="75.0" text="turno 1" />
+                                          <TableColumn fx:id="columTurno2" prefWidth="75.0" text="turno 2" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn fx:id="columMil1" editable="false" prefWidth="111.0" resizable="false" sortable="false" text="servicios">
+                                       <columns>
+                                          <TableColumn fx:id="columServicioFoto" prefWidth="75.0" text="foto" />
+                                          <TableColumn fx:id="columServicioVideo" prefWidth="75.0" text="video" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn fx:id="columCombo" editable="false" prefWidth="98.0" resizable="false" sortable="false" text="combo" />
+                                    <TableColumn fx:id="columTematica" editable="false" prefWidth="136.0" resizable="false" sortable="false" text="tematica" />
+                                    <TableColumn fx:id="columCelular1" minWidth="0.0" prefWidth="92.0" text="Celular" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutY="247.0" prefHeight="51.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="8.0">
+                           <children>
+                              <HBox fx:id="hBox1" layoutX="431.0" layoutY="8.0" prefHeight="35.0" prefWidth="181.0" stylesheets="@../recursos/Styles.css" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="0.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="349.0" prefWidth="816.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <AnchorPane minHeight="-Infinity" prefHeight="352.0" prefWidth="820.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="253.0" layoutY="14.0" prefHeight="79.0" prefWidth="542.0" style="-fx-border-color: #fff;" AnchorPane.topAnchor="14.0">
+                                 <children>
+                                    <Label layoutX="11.0" layoutY="12.0" text="DNI:(*)" />
+                                    <TextField fx:id="txtDni1" layoutX="78.0" layoutY="7.0" onKeyPressed="#aceptarEnter" promptText="Ingrese el DNI del Cliente" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="20.0" />
+                                    <Button fx:id="btnBuscar" layoutX="246.0" layoutY="40.0" mnemonicParsing="false" onAction="#buscarCliente" styleClass="button-aceptar" stylesheets="@../recursos/Styles.css" text="Buscar" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorBebidasSTock" layoutX="202.0" layoutY="57.0" prefHeight="691.0" prefWidth="822.0" visible="false">
+         <children>
+            <AnchorPane prefHeight="23.0" prefWidth="200.0" AnchorPane.bottomAnchor="410.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutY="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="109.0" layoutY="146.0" prefHeight="200.0" prefWidth="289.0" style="-fx-background-color: #00b4cb;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="146.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Nombre(*)" />
+                              <TextField fx:id="txtBebidaNombre" layoutX="79.0" layoutY="7.0" prefHeight="27.0" prefWidth="202.0" promptText="Ingrese el NOMBRE de la bebida" />
+                              <Label layoutX="14.0" layoutY="48.0" text="Precio(*)" />
+                              <TextField fx:id="txtBebidasPrecio" layoutX="94.0" layoutY="41.0" prefHeight="27.0" prefWidth="189.0" promptText="Ingrese la Precio" />
+                              <Button fx:id="bntModificarBebida" disable="true" layoutX="96.0" layoutY="151.0" mnemonicParsing="false" onAction="#modficarUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar Bebida" />
+                              <Button fx:id="bntCancelarBebida" disable="true" layoutX="181.0" layoutY="151.0" mnemonicParsing="false" onAction="#cancelarAltaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
+                              <Button fx:id="bntaltaBebida" disable="true" layoutX="96.0" layoutY="151.0" mnemonicParsing="false" onAction="#altaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Bebida" />
+                              <Button fx:id="bntBajaBebida" disable="true" layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#bajaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" />
+                              <Label layoutX="14.0" layoutY="80.0" text="Stock(*)" />
+                              <TextField fx:id="txtBebidasStock" layoutX="94.0" layoutY="73.0" prefHeight="27.0" prefWidth="189.0" promptText="Ingrese el STOCK" />
+                              <Label layoutX="14.0" layoutY="113.0" text="Marca(*)" />
+                              <TextField fx:id="txtBebidasMarca" layoutX="94.0" layoutY="106.0" prefHeight="27.0" prefWidth="189.0" promptText="Ingrese la MARCA" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="477.0" prefHeight="671.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView fx:id="tablaBebidasStock" editable="true" layoutX="68.0" layoutY="12.0" prefHeight="649.0" prefWidth="335.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">
+                           <columns>
+                              <TableColumn fx:id="columBebidasId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                              <TableColumn fx:id="columBebidasNombe" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
+                              <TableColumn fx:id="columBebidasPrecio" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Precio" />
+                              <TableColumn fx:id="columBebidasStock" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Stock" />
+                              <TableColumn fx:id="columBebidasMarca" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Marca" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnCerrarBebidasStock" mnemonicParsing="false" onAction="#cerrarGestionBebidasStock" prefHeight="17.0" prefWidth="14.0" text="X" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font size="5.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorVenderBebidasVenta" layoutX="212.0" layoutY="67.0" prefHeight="691.0" prefWidth="822.0" visible="false" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+         <children>
+            <AnchorPane layoutY="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <AnchorPane layoutX="477.0" prefHeight="671.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView fx:id="tablaBebidasAVender" editable="true" layoutX="68.0" layoutY="55.0" prefHeight="610.0" prefWidth="355.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="55.0">
+                           <columns>
+                              <TableColumn fx:id="columVentaBebidasId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                              <TableColumn fx:id="columBebidasNombe1" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
+                              <TableColumn fx:id="columVentaBebidasPrecio" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Precio" />
+                              <TableColumn fx:id="columVentaBebidasStock" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Stock" />
+                              <TableColumn fx:id="columVentaBebidasMarca" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Marca" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Button layoutX="285.0" layoutY="23.0" mnemonicParsing="false" text="Agregar Bebida" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView fx:id="tablaBebidasVendidas" editable="true" layoutX="8.0" layoutY="51.0" prefHeight="508.0" prefWidth="318.0" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+                           <columns>
+                              <TableColumn fx:id="columVendidaBebidasId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                              <TableColumn fx:id="columVendidaBebidasNombe" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
+                              <TableColumn fx:id="columVendidaBebidasPrecio" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Precio" />
+                              <TableColumn fx:id="columVendidaBebidasStock" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Stock" />
+                              <TableColumn fx:id="columVendidaBebidasMarca" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Marca" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <AnchorPane layoutY="558.0" prefHeight="115.0" prefWidth="318.0" style="-fx-background-color: #00b4cb;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="22.0" text="Total:" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="14.0" />
+                              <Button mnemonicParsing="false" text="Pagar" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="255.0" />
+                              <TextField layoutX="51.0" layoutY="17.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="51.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnCerrarBebidasVenta" mnemonicParsing="false" onAction="#cerrarGestionBebidasVenta" prefHeight="17.0" prefWidth="14.0" text="X" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font size="5.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

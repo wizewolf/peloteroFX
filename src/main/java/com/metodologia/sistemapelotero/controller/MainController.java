@@ -22,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -83,9 +84,6 @@ public class MainController implements Initializable {
 	private Button btnBebidas1;
 
 	@FXML
-	private Button btnCambiarPrecios;
-
-	@FXML
 	private Label lblUsuario;
 
 	@FXML
@@ -107,7 +105,7 @@ public class MainController implements Initializable {
 	private TableColumn<ClienteVo, String> columApellido;
 
 	@FXML
-	private TableColumn<ClienteVo, String> columId;
+	private TableColumn<ClienteVo, String> columClienteId;
 
 	@FXML
 	private TableColumn<ClienteVo, String> columDNI;
@@ -319,10 +317,10 @@ public class MainController implements Initializable {
 	private Button btnRemoveItem1;
 
 	@FXML
-	private TableView<?> tablaCombo;
+	private TableView<ComboJson> tablaCombo;
 
 	@FXML
-	private TableColumn<ComboJson, String> columCombooId1;
+	private TableColumn<ComboJson, String> columCombooId;
 
 	@FXML
 	private TableColumn<ComboJson, String> columComboCombo;
@@ -331,6 +329,106 @@ public class MainController implements Initializable {
 	private TableColumn<ComboJson, String> columcomboItems;
 	@FXML
 	private TableColumn<ComboJson, String> columcomboPrecio;
+
+	@FXML
+	private HBox hBox1;
+
+	@FXML
+	private TextField txtDni1;
+
+	@FXML
+	private Button btnBuscar;
+
+	@FXML
+	private AnchorPane anchorBebidasSTock;
+
+	@FXML
+	private TextField txtBebidaNombre;
+
+	@FXML
+	private TextField txtBebidasPrecio;
+
+	@FXML
+	private Button bntModificarBebida;
+
+	@FXML
+	private Button bntCancelarBebida;
+
+	@FXML
+	private Button bntaltaBebida;
+
+	@FXML
+	private Button bntBajaBebida;
+
+	@FXML
+	private TextField txtBebidasStock;
+
+	@FXML
+	private TextField txtBebidasMarca;
+
+	@FXML
+	private TableView<?> tablaBebidasStock;
+
+	@FXML
+	private TableColumn<?, ?> columBebidasId;
+
+	@FXML
+	private TableColumn<?, ?> columBebidasNombe;
+
+	@FXML
+	private TableColumn<?, ?> columBebidasPrecio;
+
+	@FXML
+	private TableColumn<?, ?> columBebidasStock;
+
+	@FXML
+	private TableColumn<?, ?> columBebidasMarca;
+
+	@FXML
+	private Button btnCerrarBebidasStock;
+
+	@FXML
+	private AnchorPane anchorVenderBebidasVenta;
+
+	@FXML
+	private TableView<?> tablaBebidasAVender;
+
+	@FXML
+	private TableColumn<?, ?> columVentaBebidasId;
+
+	@FXML
+	private TableColumn<?, ?> columBebidasNombe1;
+
+	@FXML
+	private TableColumn<?, ?> columVentaBebidasPrecio;
+
+	@FXML
+	private TableColumn<?, ?> columVentaBebidasStock;
+
+	@FXML
+	private TableColumn<?, ?> columVentaBebidasMarca;
+
+	@FXML
+	private TableView<?> tablaBebidasVendidas;
+
+	@FXML
+	private TableColumn<?, ?> columVendidaBebidasId;
+
+	@FXML
+	private TableColumn<?, ?> columVendidaBebidasNombe;
+
+	@FXML
+	private TableColumn<?, ?> columVendidaBebidasPrecio;
+
+	@FXML
+	private TableColumn<?, ?> columVendidaBebidasStock;
+
+	@FXML
+	private TableColumn<?, ?> columVendidaBebidasMarca;
+
+	@FXML
+	private Button btnCerrarBebidasVenta;
+
 	// <------ EndRegion de los controladores del FX --->
 	// <------ Region de los Atrivutos --->
 	public static List<UsuarioJson> usuarios;
@@ -464,7 +562,7 @@ public class MainController implements Initializable {
 	}
 
 	private void cargarTabla() {
-		columId.setCellValueFactory(cellData -> cellData.getValue().getId());
+		columClienteId.setCellValueFactory(cellData -> cellData.getValue().getId());
 		columDNI.setCellValueFactory(cellData -> cellData.getValue().getDni());
 		columNombre.setCellValueFactory(cellData -> cellData.getValue().getNombre());
 		columApellido.setCellValueFactory(cellData -> cellData.getValue().getApellido());
@@ -553,7 +651,6 @@ public class MainController implements Initializable {
 	void GestionarUsuarios(ActionEvent event) {
 		anchorUsuario.setVisible(true);
 	}
-
 
 	@FXML
 	void aceptar(ActionEvent event) {
@@ -869,6 +966,24 @@ public class MainController implements Initializable {
 
 	}
 
-	
+	@FXML
+	void aceptarEnter(KeyEvent event) {
+
+	}
+
+	@FXML
+	void cerrarGestionBebidasStock(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cerrarGestionBebidasVenta(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cerrarGestionFiestaxClientes(ActionEvent event) {
+
+	}
 
 }

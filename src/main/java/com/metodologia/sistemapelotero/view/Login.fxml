@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodologia.sistemapelotero.controller.Login">
    <children>
-      <Pane fx:id="panelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #b0b8c3;" stylesheets="@../recursos/Styles.css">
+      <Pane fx:id="panelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #9ADEE5;" stylesheets="@../recursos/Styles.css">
          <children>
             <Label layoutX="28.0" layoutY="35.0" style="-fx-text-overrun: #000;" text="BIENVENIDO" textFill="#6b6868" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                <font>
