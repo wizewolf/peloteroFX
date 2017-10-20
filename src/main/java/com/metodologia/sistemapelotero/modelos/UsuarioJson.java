@@ -8,14 +8,21 @@ public class UsuarioJson {
  * 
  **/
 	private int id;
-	private String username,password;
+	private String username,password,mail;
 	private boolean admin;
 	
-	public UsuarioJson(int id, String username, String password,boolean admin) {
+	public UsuarioJson(int id, String username, String password,boolean admin,String mail) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.admin=admin;
+		this.mail=mail;
+	}
+	public UsuarioJson(String username, String password, boolean admin, String mail) {
+		this.username = username;
+		this.password = password;
+		this.admin=admin;
+		this.mail=mail;
 	}
 	public int getId() {
 		return id;
@@ -44,6 +51,12 @@ public class UsuarioJson {
 	}
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 	
 	

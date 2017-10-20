@@ -8,6 +8,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -79,12 +80,12 @@
                            <children>
                               <VBox layoutX="48.0" layoutY="14.0" prefHeight="200.0" prefWidth="102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnCombos" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="COMBOS">
+                                    <Button fx:id="btnCombos" mnemonicParsing="false" onAction="#mostrarGestionCombo" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="COMBOS">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="btnTematicas" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="TEMATICAS">
+                                    <Button fx:id="btnTematicas" mnemonicParsing="false" onAction="#mostrarGestionTematica" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="TEMATICAS">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>
@@ -94,7 +95,7 @@
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="btnVerReservaCliente" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="VER RESERVA POR CLIENTE">
+                                    <Button fx:id="btnVerReservaCliente" mnemonicParsing="false" onAction="#MostrarReservaCliente" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="VER RESERVA POR CLIENTE">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>
@@ -111,12 +112,12 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="102.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnBebidas" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="CARGAR BEBIDAS">
+                                    <Button fx:id="btnBebidas" mnemonicParsing="false" onAction="#mostrarCargaBebidas" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="CARGAR BEBIDAS">
                                        <VBox.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Button fx:id="btnBebidas1" mnemonicParsing="false" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="VENDER BEBIDAS" />
+                                    <Button fx:id="btnBebidas1" mnemonicParsing="false" onAction="#MostrarVenderBebidas" prefHeight="30.0" prefWidth="184.0" styleClass="botonMenu" text="VENDER BEBIDAS" />
                                  </children>
                               </VBox>
                            </children>
@@ -264,16 +265,19 @@
                <children>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane layoutX="109.0" layoutY="146.0" prefHeight="111.0" prefWidth="277.0" style="-fx-background-color: #00b4cb;" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="146.0">
+                        <AnchorPane layoutX="109.0" layoutY="146.0" prefHeight="176.0" prefWidth="277.0" style="-fx-background-color: #00b4cb;" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="146.0">
                            <children>
                               <Label layoutX="14.0" layoutY="14.0" text="Usuario:" />
-                              <TextField fx:id="txtUsuario" layoutX="64.0" layoutY="10.0" prefHeight="27.0" prefWidth="202.0" />
-                              <Label layoutX="14.0" layoutY="48.0" text="Contraseña:" />
-                              <TextField fx:id="txtContraseña" layoutX="79.0" layoutY="44.0" prefHeight="27.0" prefWidth="189.0" />
-                              <Button fx:id="bntModificarUsuario" disable="true" layoutX="101.0" layoutY="80.0" mnemonicParsing="false" onAction="#modficarUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar usuario" />
-                              <Button fx:id="bntCancelarAltaUsuario" disable="true" layoutX="186.0" layoutY="80.0" mnemonicParsing="false" onAction="#cancelarAltaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
-                              <Button fx:id="bntaltaUsuario" disable="true" layoutX="101.0" layoutY="80.0" mnemonicParsing="false" onAction="#altaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Usuario" />
-                              <Button fx:id="bntBajaUsuario" disable="true" layoutX="15.0" layoutY="80.0" mnemonicParsing="false" onAction="#bajaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" />
+                              <TextField fx:id="txtUsuario" layoutX="64.0" layoutY="10.0" prefHeight="27.0" prefWidth="202.0" promptText="Ingrese el USUARIO" />
+                              <Label layoutX="14.0" layoutY="48.0" text="Email" />
+                              <TextField fx:id="txtEmail" layoutX="66.0" layoutY="44.0" prefHeight="27.0" prefWidth="202.0" promptText="Ingrese el EMAIL" />
+                              <Button fx:id="bntModificarUsuario" disable="true" layoutX="96.0" layoutY="134.0" mnemonicParsing="false" onAction="#modficarUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar usuario" />
+                              <Button fx:id="bntCancelarAltaUsuario" disable="true" layoutX="181.0" layoutY="134.0" mnemonicParsing="false" onAction="#cancelarAltaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" />
+                              <Button fx:id="bntaltaUsuario" disable="true" layoutX="96.0" layoutY="134.0" mnemonicParsing="false" onAction="#altaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Usuario" />
+                              <Button fx:id="bntBajaUsuario" disable="true" layoutX="10.0" layoutY="134.0" mnemonicParsing="false" onAction="#bajaUsuario" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" />
+                              <Label layoutX="14.0" layoutY="81.0" text="Contraseña:" />
+                              <PasswordField fx:id="txtContraseña" layoutX="80.0" layoutY="77.0" prefHeight="27.0" prefWidth="189.0" promptText="Ingrese la CONTRASEÑA" />
+                              <CheckBox fx:id="chkAdmin" layoutX="18.0" layoutY="111.0" mnemonicParsing="false" text="Administrador" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -285,7 +289,7 @@
                            <columns>
                               <TableColumn fx:id="columUsuarioId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
                               <TableColumn fx:id="columUsuarioUsuario" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Usuario" />
-                              <TableColumn fx:id="columUsuarioContraseña" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Contraseña" />
+                              <TableColumn fx:id="columUsuarioMail" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Mail" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -567,7 +571,7 @@
                         <TableView fx:id="tablaBebidasAVender" editable="true" layoutX="68.0" layoutY="55.0" prefHeight="610.0" prefWidth="355.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="55.0">
                            <columns>
                               <TableColumn fx:id="columVentaBebidasId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
-                              <TableColumn fx:id="columBebidasNombe1" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
+                              <TableColumn fx:id="columVentaBebidassNombe" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Nombre" />
                               <TableColumn fx:id="columVentaBebidasPrecio" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Precio" />
                               <TableColumn fx:id="columVentaBebidasStock" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Stock" />
                               <TableColumn fx:id="columVentaBebidasMarca" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Marca" />
@@ -609,6 +613,47 @@
                   <Font size="5.0" />
                </font>
             </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchortematica" layoutX="212.0" layoutY="70.0" prefHeight="691.0" prefWidth="822.0" visible="false">
+         <children>
+            <Button fx:id="btnCerrarTematica" mnemonicParsing="false" onAction="#cerrarGestionTematica" prefHeight="17.0" prefWidth="14.0" text="X" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font size="5.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutY="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutX="29.0" layoutY="142.0" prefHeight="87.0" prefWidth="489.0" style="-fx-background-color: #00b4cb;" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="142.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Teamtica:" />
+                              <TextField fx:id="txtTematica" layoutX="64.0" layoutY="10.0" prefHeight="27.0" prefWidth="362.0" promptText="Ingrese la tematica" />
+                              <Button fx:id="bntModificarTeamatica" disable="true" layoutX="203.0" layoutY="281.0" mnemonicParsing="false" onAction="#modficarTematica" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Modificar Tematica" AnchorPane.bottomAnchor="5.0" />
+                              <Button fx:id="bntCancelarTematica" disable="true" layoutX="288.0" layoutY="281.0" mnemonicParsing="false" onAction="#cancelarAltaTematica" prefHeight="35.0" prefWidth="86.0" styleClass="button-cancel" text="Cancelar" AnchorPane.bottomAnchor="5.0" />
+                              <Button fx:id="bntaltaTematica" disable="true" layoutX="203.0" layoutY="281.0" mnemonicParsing="false" onAction="#altaTeamtica" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Alta Tematica" AnchorPane.bottomAnchor="5.0" />
+                              <Button fx:id="bntBajaTematica" disable="true" layoutX="117.0" layoutY="281.0" mnemonicParsing="false" onAction="#bajaTematieca" prefHeight="35.0" prefWidth="86.0" styleClass="button-aceptar" text="Baja" AnchorPane.bottomAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="477.0" minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="477.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutY="67.0" prefHeight="671.0" prefWidth="345.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TableView fx:id="tablaTematica" editable="true" layoutX="68.0" layoutY="12.0" prefHeight="649.0" prefWidth="267.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="12.0">
+                           <columns>
+                              <TableColumn fx:id="columTematicaId" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Id" visible="false" />
+                              <TableColumn fx:id="columTematicaTematica" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Tematica" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -37,6 +38,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import com.metodologia.sistemapelotero.modelos.BebidaJson;
 import com.metodologia.sistemapelotero.modelos.ClientesJson;
 import com.metodologia.sistemapelotero.modelos.ComboJson;
 import com.metodologia.sistemapelotero.modelos.Direccion;
@@ -190,6 +192,10 @@ public class MainController implements Initializable {
 
 	@FXML
 	private TextField txtUsuario;
+	@FXML
+	private TextField txtEmail;
+	  @FXML
+	    private CheckBox chkAdmin;
 
 	@FXML
 	private TextField txtContraseña;
@@ -367,22 +373,22 @@ public class MainController implements Initializable {
 	private TextField txtBebidasMarca;
 
 	@FXML
-	private TableView<?> tablaBebidasStock;
+	private TableView<BebidaJson> tablaBebidasStock;
 
 	@FXML
-	private TableColumn<?, ?> columBebidasId;
+	private TableColumn<BebidaJson, String> columBebidasId;
 
 	@FXML
-	private TableColumn<?, ?> columBebidasNombe;
+	private TableColumn<BebidaJson, String> columBebidasNombe;
 
 	@FXML
-	private TableColumn<?, ?> columBebidasPrecio;
+	private TableColumn<BebidaJson, String> columBebidasPrecio;
 
 	@FXML
-	private TableColumn<?, ?> columBebidasStock;
+	private TableColumn<BebidaJson, String> columBebidasStock;
 
 	@FXML
-	private TableColumn<?, ?> columBebidasMarca;
+	private TableColumn<BebidaJson, String> columBebidasMarca;
 
 	@FXML
 	private Button btnCerrarBebidasStock;
@@ -391,40 +397,40 @@ public class MainController implements Initializable {
 	private AnchorPane anchorVenderBebidasVenta;
 
 	@FXML
-	private TableView<?> tablaBebidasAVender;
+	private TableView<BebidaJson> tablaBebidasAVender;
 
 	@FXML
-	private TableColumn<?, ?> columVentaBebidasId;
+	private TableColumn<BebidaJson, String> columVentaBebidasId;
 
 	@FXML
-	private TableColumn<?, ?> columBebidasNombe1;
+	private TableColumn<BebidaJson, String> columBebidasNombe1;
 
 	@FXML
-	private TableColumn<?, ?> columVentaBebidasPrecio;
+	private TableColumn<BebidaJson, String> columVentaBebidasPrecio;
 
 	@FXML
-	private TableColumn<?, ?> columVentaBebidasStock;
+	private TableColumn<BebidaJson, String> columVentaBebidasStock;
 
 	@FXML
-	private TableColumn<?, ?> columVentaBebidasMarca;
+	private TableColumn<BebidaJson, String> columVentaBebidasMarca;
 
 	@FXML
-	private TableView<?> tablaBebidasVendidas;
+	private TableView<BebidaJson> tablaBebidasVendidas;
 
 	@FXML
-	private TableColumn<?, ?> columVendidaBebidasId;
+	private TableColumn<BebidaJson, String> columVendidaBebidasId;
 
 	@FXML
-	private TableColumn<?, ?> columVendidaBebidasNombe;
+	private TableColumn<BebidaJson, String> columVendidaBebidasNombe;
 
 	@FXML
-	private TableColumn<?, ?> columVendidaBebidasPrecio;
+	private TableColumn<BebidaJson, String> columVendidaBebidasPrecio;
 
 	@FXML
-	private TableColumn<?, ?> columVendidaBebidasStock;
+	private TableColumn<BebidaJson, String> columVendidaBebidasStock;
 
 	@FXML
-	private TableColumn<?, ?> columVendidaBebidasMarca;
+	private TableColumn<BebidaJson, String> columVendidaBebidasMarca;
 
 	@FXML
 	private Button btnCerrarBebidasVenta;
@@ -440,6 +446,10 @@ public class MainController implements Initializable {
 	List<ClientesJson> clientesRes = RESTCliente.getClientes();
 	private ClientesJson clienteReserva;
 	private UsuarioJson usuarioJSO;
+
+	private List<UsuarioJson> usuariosRes;
+
+	private UsuariosVo usuario;
 
 	// <------ EndRegion de los atrivutos --->
 	// <------ Region de los metodos set/get/initialize --->
@@ -585,10 +595,10 @@ public class MainController implements Initializable {
 			System.out.println(personsData);
 			tableClientes.setItems(personsData);
 			// Clear person details.
-			showCustomerDetails(null);
+			showClientesDetails(null);
 			// Listen for selection changes and show the person details when changed.
 			tableClientes.getSelectionModel().selectedItemProperty()
-					.addListener((observable, oldValue, newValue) -> showCustomerDetails(newValue));
+					.addListener((observable, oldValue, newValue) -> showClientesDetails(newValue));
 		} catch (Exception e) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("Error");
@@ -598,7 +608,7 @@ public class MainController implements Initializable {
 
 	}
 
-	private void showCustomerDetails(ClienteVo persona) {
+	private void showClientesDetails(ClienteVo persona) {
 		if (persona != null) {
 			this.cliente = persona;
 			// Fill the labels with info from the person object.
@@ -714,7 +724,7 @@ public class MainController implements Initializable {
 
 	@FXML
 	void cancelarAltaCliente(ActionEvent event) {
-		showCustomerDetails(null);
+		showClientesDetails(null);
 
 	}
 
@@ -762,24 +772,147 @@ public class MainController implements Initializable {
 
 	@FXML
 	void altaUsuario(ActionEvent event) {
-
+		if (txtUsuario.getLength() != 0 && txtEmail.getLength() != 0 && txtContraseña.getLength() != 0
+				&& txtContraseña.getLength() != 0) {
+			UsuarioJson usuJSON = new UsuarioJson(txtUsuario.getText(), txtContraseña.getText(), chkAdmin.selectedProperty().get(), txtEmail.getText());
+			if (RESTCliente.postUsuarioJsom(usuJSON)) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Alta del USUARIO con exito");
+				alert.setContentText("La operacion se completo con exito");
+				alert.show();
+			}
+			clientesRes = RESTCliente.getClientes();
+			cargarTabla();
+		} else {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Error en la carga del USUARIO");
+			alert.setContentText("Los campos no tienen que estar vacios");
+			alert.show();
+		}
 	}
 
 	@FXML
 	void bajaUsuario(ActionEvent event) {
-
+		if (RESTCliente.deteUsuario(Integer.valueOf(usuario.getId().getValue()))) {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Baja del USUARIO con exito");
+			alert.setContentText("La operacion se completo con exito");
+			alert.show();
+			usuariosRes = RESTCliente.getUsuarios();
+			cargarTablaUsuarios();
+		} else {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Error en la baja del Cliente");
+			alert.show();
+		}
+	}
+//usuarios
+	private void cargarTablaUsuarios() {
+		columUsuarioId.setCellValueFactory(cellData -> cellData.getValue().getId());
+		columUsuarioNombre.setCellValueFactory(cellData -> cellData.getValue().getUsername());
+		columUsuarioMail.setCellValueFactory(cellData -> cellData.getValue().getMail());
+		
+		try {
+			personsData.clear();
+			for (ClientesJson clientesJson : clientesRes) {
+				personsData.add(new ClienteVo(clientesJson.getId(), clientesJson.getCuil(), clientesJson.getnombre(),
+						clientesJson.getApellido(), clientesJson.getTelefono(), clientesJson.getEmail(),
+						clientesJson.getOtraInformacion(), clientesJson.getCelular(), clientesJson.getDireccion()));
+			}
+			;
+			System.out.println(personsData);
+			tableClientes.setItems(personsData);
+			// Clear person details.
+			showClientesDetails(null);
+			// Listen for selection changes and show the person details when changed.
+			tableClientes.getSelectionModel().selectedItemProperty()
+					.addListener((observable, oldValue, newValue) -> showClientesDetails(newValue));
+		} catch (Exception e) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Compruebe su conexion de internet e intenet nuevamente");
+			alert.show();
+		}
 	}
 
 	@FXML
 	void cancelarAltaUsuario(ActionEvent event) {
+		showUsuarioDetails(null);
+	}
 
+	private void showUsuarioDetails(UsuariosVo usuario) {
+		if (usuario != null) {
+			this.usuario = usuario;
+			// Fill the labels with info from the person object.
+			chkAdmin.setScaleShape(usuario.getAdmin().getValue());
+			txtUsuario.setText(usuario.getUsername().getValue());
+			txtMail.setText(usuario.getMail().getValue());
+			txtContraseña.setText(usuario.getPassword().getValue());
+			bntaltaUsuario.setVisible(false);
+			bntaltaUsuario.setDisable(true);
+			bntModificarUsuario.setVisible(true);
+			bntModificarUsuario.setDisable(false);
+			bntCancelarAltaUsuario.setVisible(true);
+			bntCancelarAltaUsuario.setDisable(false);
+			bntBajaUsuario.setVisible(true);
+			bntBajaUsuario.setDisable(false);
+			// refrescaTablas();
+
+		} else {
+			// Person is null, remove all the text.
+			bntaltaUsuario.setVisible(true);
+			bntaltaUsuario.setDisable(false);
+			bntModificarUsuario.setVisible(false);
+			bntModificarBebida.setDisable(true);
+			bntCancelarAltaUsuario.setVisible(false);
+			bntaltaCliente.setDisable(true);
+			bntBajaUsuario.setVisible(false);
+			bntBajaUsuario.setDisable(true);
+			chkAdmin.setScaleShape(false);
+			txtUsuario.setText("");
+			txtMail.setText("");
+			txtContraseña.setText("");
+		}
+		
 	}
 
 	@FXML
 	void modficarUsuario(ActionEvent event) {
+		if (txtUsuario.getLength() != 0 && txtEmail.getLength() != 0 && txtContraseña.getLength() != 0
+				&& txtContraseña.getLength() != 0) {
+			UsuarioJson usuJSON = new UsuarioJson(txtUsuario.getText(), txtContraseña.getText(), chkAdmin.selectedProperty().get(), txtEmail.getText());
+			if (RESTCliente.putClienteModificar(usuJSON)) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Alta del USUARIO con exito");
+				alert.setContentText("La operacion se completo con exito");
+				alert.show();
+			}
+			clientesRes = RESTCliente.getClientes();
+			cargarTabla();
+		} else {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Error en la carga del USUARIO");
+			alert.setContentText("Los campos no tienen que estar vacios");
+			alert.show();
+		}
+	}
+	@FXML
+	void cerrarGestionUsuario(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("¿Desea terminar?");
+		alert.setHeaderText("¿Desea terminar con la gestion de Usuario?");
+		ButtonType btAceptar = new ButtonType("Aceptar");
+		ButtonType btCancelar = new ButtonType("Cancelar");
+		alert.getButtonTypes().setAll(btAceptar, btCancelar);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == btAceptar) {
+			anchorPaneClientes.setVisible(false);
+		} else {
+			// ... user chose CANCEL or closed the dialog
+		}
 
 	}
-
+	//end usuarios
 	@FXML
 	void buscarCliente(ActionEvent event) {
 		boolean encontro = false;
@@ -901,23 +1034,12 @@ public class MainController implements Initializable {
 		lblUsuario.setText(usuarioJSO.getUsername());
 
 	}
-
+//combos
 	@FXML
 	void bajaCombo(ActionEvent event) {
 
 	}
-
-	@FXML
-	void cancelarAltaCombo(ActionEvent event) {
-
-	}
-
-	@FXML
-	void cancelarAltaFiesta(ActionEvent event) {
-
-	}
-
-	@FXML
+@FXML
 	void cerrarGestionCombo(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("¿Desea terminar?");
@@ -933,43 +1055,45 @@ public class MainController implements Initializable {
 		}
 
 	}
-
 	@FXML
-	void cerrarGestionUsuario(ActionEvent event) {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("¿Desea terminar?");
-		alert.setHeaderText("¿Desea terminar con la gestion de Usuario?");
-		ButtonType btAceptar = new ButtonType("Aceptar");
-		ButtonType btCancelar = new ButtonType("Cancelar");
-		alert.getButtonTypes().setAll(btAceptar, btCancelar);
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == btAceptar) {
-			anchorPaneClientes.setVisible(false);
-		} else {
-			// ... user chose CANCEL or closed the dialog
-		}
+	void cancelarAltaCombo(ActionEvent event) {
 
 	}
+	@FXML
+	void modficarCombo(ActionEvent event) {
+
+	}
+	@FXML
+	void removeItem(ActionEvent event) {
+
+	}
+
+//end combo
+	//reserva de fiesta
+	@FXML
+	void cancelarAltaFiesta(ActionEvent event) {
+
+	}
+
+	
+
+	
 
 	@FXML
 	void hacerReserva(ActionEvent event) {
 
 	}
 
-	@FXML
-	void modficarCombo(ActionEvent event) {
-
-	}
-
-	@FXML
-	void removeItem(ActionEvent event) {
-
-	}
+	
+	
 
 	@FXML
 	void aceptarEnter(KeyEvent event) {
 
 	}
+	//reserva ppor cliente
+	//end reserva ppor cliente
+	//bebidas
 
 	@FXML
 	void cerrarGestionBebidasStock(ActionEvent event) {
@@ -980,7 +1104,9 @@ public class MainController implements Initializable {
 	void cerrarGestionBebidasVenta(ActionEvent event) {
 
 	}
-
+//end bebidas
+	//tematica
+	//end tematica
 	@FXML
 	void cerrarGestionFiestaxClientes(ActionEvent event) {
 
