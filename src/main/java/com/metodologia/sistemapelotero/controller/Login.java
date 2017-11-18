@@ -55,6 +55,7 @@ public class Login {
 				stageMain.setScene(scene);
 				stageMain.setMaximized(true);
 				System.out.println(MainController.usuarios.toString());
+				/*
 				for (UsuarioJson usuariosJason : MainController.usuarios) {
 					System.out.println("usurJSO"+usuariosJason.getUsername());
 					System.out.println("usur"+usuario);
@@ -75,12 +76,12 @@ public class Login {
 					}else {
 						System.out.println("no");
 					}
+				}*/
+				if (usuario.equals("admin") && pass.equals("admin")) {					
+					mainController.setUsuarioAdmin(true);
+				}else {
+					mainController.setUsuarioAdmin(false);
 				}
-//				if (usuario.equals("admin") && pass.equals("admin")) {
-//					mainController.setUsuarioAdmin(true);
-//				}else {
-//					mainController.setUsuarioAdmin(false);
-//				}
 				
 				
 			} catch (IOException e) {
