@@ -54,7 +54,7 @@ public class Login {
 				stageMain.setTitle("Travesuras Infantiles");
 				stageMain.setScene(scene);
 				stageMain.setMaximized(true);
-				System.out.println(MainController.usuarios.toString());
+				//System.out.println(MainController.usuarios.toString());
 				/*
 				for (UsuarioJson usuariosJason : MainController.usuarios) {
 					System.out.println("usurJSO"+usuariosJason.getUsername());
@@ -82,6 +82,8 @@ public class Login {
 				}else {
 					mainController.setUsuarioAdmin(false);
 				}
+				stageMain.show();
+				panelLogin.getScene().getWindow().hide();
 				
 				
 			} catch (IOException e) {

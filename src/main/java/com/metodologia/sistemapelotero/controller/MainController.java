@@ -194,8 +194,8 @@ public class MainController implements Initializable {
 	private TextField txtUsuario;
 	@FXML
 	private TextField txtEmail;
-	  @FXML
-	    private CheckBox chkAdmin;
+	@FXML
+	private CheckBox chkAdmin;
 
 	@FXML
 	private TextField txtContraseña;
@@ -437,13 +437,13 @@ public class MainController implements Initializable {
 
 	// <------ EndRegion de los controladores del FX --->
 	// <------ Region de los Atrivutos --->
-	public static List<UsuarioJson> usuarios;
+	//public static List<UsuarioJson> usuarios;
 	public boolean UsuarioAdmin;
 	private Stage dialogStage;
 	private String str;
 	private ObservableList<ClienteVo> personsData = FXCollections.observableArrayList();
 	private ClienteVo cliente;
-	List<ClientesJson> clientesRes = RESTCliente.getClientes();
+	//List<ClientesJson> clientesRes = RESTCliente.getClientes();
 	private ClientesJson clienteReserva;
 	private UsuarioJson usuarioJSO;
 
@@ -584,7 +584,7 @@ public class MainController implements Initializable {
 		columMil.setCellValueFactory(cellData -> cellData.getValue().getMail());
 		columCelular.setCellValueFactory(cellData -> cellData.getValue().getCelular());
 		columOtIn.setCellValueFactory(cellData -> cellData.getValue().getOtraInf());
-		try {
+		/*try {
 			personsData.clear();
 			for (ClientesJson clientesJson : clientesRes) {
 				personsData.add(new ClienteVo(clientesJson.getId(), clientesJson.getCuil(), clientesJson.getnombre(),
@@ -596,7 +596,8 @@ public class MainController implements Initializable {
 			tableClientes.setItems(personsData);
 			// Clear person details.
 			showClientesDetails(null);
-			// Listen for selection changes and show the person details when changed.
+			// Listen for selection changes and show the person details when
+			// changed.
 			tableClientes.getSelectionModel().selectedItemProperty()
 					.addListener((observable, oldValue, newValue) -> showClientesDetails(newValue));
 		} catch (Exception e) {
@@ -604,7 +605,7 @@ public class MainController implements Initializable {
 			alert.setTitle("Error");
 			alert.setContentText("Compruebe su conexion de internet e intenet nuevamente");
 			alert.show();
-		}
+		}*/
 
 	}
 
@@ -675,7 +676,7 @@ public class MainController implements Initializable {
 			alert.setTitle("Baja del CLIENTE con exito");
 			alert.setContentText("La operacion se completo con exito");
 			alert.show();
-			clientesRes = RESTCliente.getClientes();
+			//clientesRes = RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -712,7 +713,7 @@ public class MainController implements Initializable {
 				alert.setTitle("Se modifico del CLIENTE con exito");
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
-				clientesRes = RESTCliente.getClientes();
+				//clientesRes = RESTCliente.getClientes();
 				cargarTabla();
 			} else {
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -739,7 +740,7 @@ public class MainController implements Initializable {
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
 			}
-			clientesRes = RESTCliente.getClientes();
+			//clientesRes = RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -774,14 +775,15 @@ public class MainController implements Initializable {
 	void altaUsuario(ActionEvent event) {
 		if (txtUsuario.getLength() != 0 && txtEmail.getLength() != 0 && txtContraseña.getLength() != 0
 				&& txtContraseña.getLength() != 0) {
-			UsuarioJson usuJSON = new UsuarioJson(txtUsuario.getText(), txtContraseña.getText(), chkAdmin.selectedProperty().get(), txtEmail.getText());
+			UsuarioJson usuJSON = new UsuarioJson(txtUsuario.getText(), txtContraseña.getText(),
+					chkAdmin.selectedProperty().get(), txtEmail.getText());
 			if (RESTCliente.postUsuarioJsom(usuJSON)) {
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
 				alert.setTitle("Alta del USUARIO con exito");
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
 			}
-			clientesRes = RESTCliente.getClientes();
+			//clientesRes = RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -806,13 +808,14 @@ public class MainController implements Initializable {
 			alert.show();
 		}
 	}
-//usuarios
+
+	// usuarios
 	private void cargarTablaUsuarios() {
 		columUsuarioId.setCellValueFactory(cellData -> cellData.getValue().getId());
 		columUsuarioNombre.setCellValueFactory(cellData -> cellData.getValue().getUsername());
 		columUsuarioMail.setCellValueFactory(cellData -> cellData.getValue().getMail());
-		
-		try {
+
+		/*try {
 			personsData.clear();
 			for (ClientesJson clientesJson : clientesRes) {
 				personsData.add(new ClienteVo(clientesJson.getId(), clientesJson.getCuil(), clientesJson.getnombre(),
@@ -824,7 +827,8 @@ public class MainController implements Initializable {
 			tableClientes.setItems(personsData);
 			// Clear person details.
 			showClientesDetails(null);
-			// Listen for selection changes and show the person details when changed.
+			// Listen for selection changes and show the person details when
+			// changed.
 			tableClientes.getSelectionModel().selectedItemProperty()
 					.addListener((observable, oldValue, newValue) -> showClientesDetails(newValue));
 		} catch (Exception e) {
@@ -832,7 +836,7 @@ public class MainController implements Initializable {
 			alert.setTitle("Error");
 			alert.setContentText("Compruebe su conexion de internet e intenet nuevamente");
 			alert.show();
-		}
+		}*/
 	}
 
 	@FXML
@@ -873,21 +877,22 @@ public class MainController implements Initializable {
 			txtMail.setText("");
 			txtContraseña.setText("");
 		}
-		
+
 	}
 
 	@FXML
 	void modficarUsuario(ActionEvent event) {
 		if (txtUsuario.getLength() != 0 && txtEmail.getLength() != 0 && txtContraseña.getLength() != 0
 				&& txtContraseña.getLength() != 0) {
-			UsuarioJson usuJSON = new UsuarioJson(txtUsuario.getText(), txtContraseña.getText(), chkAdmin.selectedProperty().get(), txtEmail.getText());
+			UsuarioJson usuJSON = new UsuarioJson(txtUsuario.getText(), txtContraseña.getText(),
+					chkAdmin.selectedProperty().get(), txtEmail.getText());
 			if (RESTCliente.putClienteModificar(usuJSON)) {
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
 				alert.setTitle("Alta del USUARIO con exito");
 				alert.setContentText("La operacion se completo con exito");
 				alert.show();
 			}
-			clientesRes = RESTCliente.getClientes();
+			//clientesRes = RESTCliente.getClientes();
 			cargarTabla();
 		} else {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -896,6 +901,7 @@ public class MainController implements Initializable {
 			alert.show();
 		}
 	}
+
 	@FXML
 	void cerrarGestionUsuario(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -912,17 +918,18 @@ public class MainController implements Initializable {
 		}
 
 	}
-	//end usuarios
+
+	// end usuarios
 	@FXML
 	void buscarCliente(ActionEvent event) {
 		boolean encontro = false;
-		for (ClientesJson clientesJson : clientesRes) {
+		/*for (ClientesJson clientesJson : clientesRes) {
 			if (clientesJson.getCuil().contains(txtDniClienteBuscar.getText())) {
 				clienteReserva = clientesJson;
 				encontro = true;
 				break;
 			}
-		}
+		}*/
 		if (encontro) {
 			txtDniClienteBuscar.setText(clienteReserva.getCuil());
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -1034,12 +1041,14 @@ public class MainController implements Initializable {
 		lblUsuario.setText(usuarioJSO.getUsername());
 
 	}
-//combos
+
+	// combos
 	@FXML
 	void bajaCombo(ActionEvent event) {
 
 	}
-@FXML
+
+	@FXML
 	void cerrarGestionCombo(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("¿Desea terminar?");
@@ -1055,45 +1064,41 @@ public class MainController implements Initializable {
 		}
 
 	}
+
 	@FXML
 	void cancelarAltaCombo(ActionEvent event) {
 
 	}
+
 	@FXML
 	void modficarCombo(ActionEvent event) {
 
 	}
+
 	@FXML
 	void removeItem(ActionEvent event) {
 
 	}
 
-//end combo
-	//reserva de fiesta
+	// end combo
+	// reserva de fiesta
 	@FXML
 	void cancelarAltaFiesta(ActionEvent event) {
 
 	}
-
-	
-
-	
 
 	@FXML
 	void hacerReserva(ActionEvent event) {
 
 	}
 
-	
-	
-
 	@FXML
 	void aceptarEnter(KeyEvent event) {
 
 	}
-	//reserva ppor cliente
-	//end reserva ppor cliente
-	//bebidas
+	// reserva ppor cliente
+	// end reserva ppor cliente
+	// bebidas
 
 	@FXML
 	void cerrarGestionBebidasStock(ActionEvent event) {
@@ -1104,9 +1109,63 @@ public class MainController implements Initializable {
 	void cerrarGestionBebidasVenta(ActionEvent event) {
 
 	}
-//end bebidas
-	//tematica
-	//end tematica
+
+	@FXML // metodo q faltaba
+	void mostrarGestionCombo(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void mostrarGestionTematica(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void mostrarCargaBebidas(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void MostrarVenderBebidas(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void MostrarReservaCliente(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void cerrarGestionTematica(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void modficarTematica(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void cancelarAltaTematica(ActionEvent event) {
+
+	}
+
+	@FXML // metodo q faltaba
+	void altaTeamtica(ActionEvent event) {
+
+	}
+	@FXML // metodo q faltaba
+	void altateamtica(ActionEvent event) {
+		
+	}
+	@FXML // metodo q faltaba
+	void bajaTematieca(ActionEvent event) {
+		
+	}
+
+	// end bebidas
+	// tematica
+	// end tematica
 	@FXML
 	void cerrarGestionFiestaxClientes(ActionEvent event) {
 

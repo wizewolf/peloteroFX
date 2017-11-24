@@ -53,7 +53,7 @@ public class PreLoader implements Initializable {
 			try {
 
 				//Thread.sleep(5000);
-				MainController.usuarios=RESTCliente.getUsuarios();
+				//MainController.usuarios=RESTCliente.getUsuarios();
 				Platform.runLater(new Runnable() {
 
 					public void run() {
